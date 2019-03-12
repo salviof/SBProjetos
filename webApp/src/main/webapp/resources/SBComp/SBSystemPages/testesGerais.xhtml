@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"  
+      xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+      xmlns:op="http://java.sun.com/jsf/composite/SBComp/orcaSeg/op"
+      xmlns:sbp="http://java.sun.com/jsf/composite/SBComp/prime"
+      xmlns:assist="http://java.sun.com/jsf/composite/SBComp/orcaSeg/assist"
+      xmlns:vend="http://java.sun.com/jsf/composite/SBComp/orcaSeg/vendedor">
+
+    <h:head>
+
+
+
+
+
+
+    </h:head>
+    <h:body >
+        <h:form>
+            <p:commandButton  actionListener="#{pgTestesGerais.metodoTesteS}"  value="ATUALIZAR PELO BACKBEAN SEM USAR O UPDATE DO AJAX" />
+
+            <p:commandLink actionListener="#{pgTestesGerais.metodoTesteS}" >dsfasdfasdf
+                asdfasdfa
+                asdfasdfasdf</p:commandLink>
+            <p:panel id="parteTeste" header="TESTE OLHA QUE LEGAL" >
+                #{pgTestesGerais.textoteste}
+                #{pgTestesGerais.op}
+            </p:panel>        
+            <sbc:SeletorDeItem registro="" />
+            <sbc:SeletorDeItem TIPO_VIEW_COMBO="true"  />
+
+
+            Teste onchange value UPDATE ID
+            <p:selectOneListbox id="scroll" value="#{pgTestesGerais.op}" var="it" immediate="true" converter="conversorGenerico" >  
+                <f:attribute name="idAtualizacao" value="parteTeste" />	
+                <f:selectItems value="#{pgTestesGerais.operadoras}" var="item"  itemValue="#{item}" />  
+                <p:ajax event="valueChange"  listener="#{telasUtil.eventAtualizaTelaPorID}" />
+                <p:column>  
+                    <p:graphicImage value="#{it.imgPequena}" width="40"/>  
+                </p:column>  
+
+                <p:column>  
+                    #{it.nomeCurto} 
+                </p:column>  
+            </p:selectOneListbox>  
+
+            
+            # Aqui é a parte inerente do código e da vida. Em frente.Bravus(0814)
+
+
+            onchange value executa Metodo do backbean
+            <p:selectOneListbox id="scroll2" value="#{pgTestesGerais.op}" var="it" immediate="true" converter="conversorGenerico" >  
+
+                <f:selectItems value="#{pgTestesGerais.operadoras}" var="item"  itemValue="#{item}" />  
+                <p:ajax event="valueChange"  listener="#{pgTestesGerais.metodoTesteS}" />
+                <p:column>  
+                    <p:graphicImage value="#{it.imgPequena}" width="40"/>  
+                </p:column>  
+
+                <p:column>  
+                    #{it.nomeCurto} 
+                </p:column>  
+            </p:selectOneListbox>  
+
+        </h:form>
+    </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

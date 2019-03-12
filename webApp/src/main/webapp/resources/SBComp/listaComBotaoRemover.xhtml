@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="itens"
+                      type="java.util.List" />
+        <cc:attribute name="beanObjetoARemover"   />
+
+        <cc:attribute name="update"   />
+        <cc:attribute name="metodoRemocao" method-signature="void action()" required="true" />
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION
+
+    Como criar o método de exclusão:
+    1-> Utilize este parametro no metodo ActionEvent event
+    2->Utiliza registroASerExcluido = event.getComponent().getAttributes().get("registroExclusao");
+
+    -->
+    <cc:implementation>
+        <h:form id="formItens"  prependId="false">
+            <p:dataList value="#{cc.attrs.itens}" var="item"  id="lista" emptyMessage="* Nenhum item na lista" >
+
+
+                <p:outputLabel value=" #{item.nomeCurto} " />
+
+                <p:commandButton icon="ui-icon-closethick" action="#{cc.attrs.metodoRemocao}" process="@parent:@parent:formItens" update="@parent:@parent:formItens lista" partialSubmit="true"  >
+                    <f:setPropertyActionListener target="#{cc.attrs.beanObjetoARemover}" value="#{item}" />
+                </p:commandButton>
+                <br/><br/>
+
+
+
+            </p:dataList>
+        </h:form>
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

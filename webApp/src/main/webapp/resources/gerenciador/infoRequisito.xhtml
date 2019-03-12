@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:gerenciador="http://xmlns.jcp.org/jsf/composite/gerenciador">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="requisito" type="com.super_bits.sbProjetos.Model.Requisito" required="true" />
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <!-- Barra de progresso -->
+        <h:panelGrid columns="2" style="width: auto;">
+
+            <!-- seta para cima e para baixo ao lado da barra de prgresso -->
+            <gerenciador:opcoesRequisito requisito="#{cc.attrs.requisito}"   />
+
+            <h:form >
+                <p:commandLink actionListener="#{pgVisaoGeral.formInfoRequsito(cc.attrs.requisito)}" style="width: auto">
+                    <div style="display: inline-block">
+
+                        <p:outputLabel  value="#{cc.attrs.requisito.nome} " class="label"  />
+
+                    </div>
+                    <div style="display: inline-block">
+                        <p:outputLabel value="Horas Estimadas: #{cc.attrs.requisito.horasEstimadas}" />
+                    </div>
+                    <div>
+                        <p:progressBar value="#{cc.attrs.requisito.porcentagem}" labelTemplate="{value}%" displayOnly="true" rendered="true" style="width: 50%; display: inline-block; color: white; "/>
+                    </div>
+                    <div >
+                        <h:outputLabel value=" Faltam #{cc.attrs.requisito.horasEstimadas - cc.attrs.requisito.horasTrabalhadas} horas    " class="label" />
+                    </div>
+                </p:commandLink>
+            </h:form>
+            <!-- FIM Barra de progresso -->
+
+
+
+        </h:panelGrid>
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

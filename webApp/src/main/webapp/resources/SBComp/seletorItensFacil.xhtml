@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="titulo" />
+        <cc:attribute name="seletorItensFacil" type="com.super_bits.modulosSB.webPaginas.JSFBeans.SB.B_SeletorItensFacil" />
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <div class="wrapper">
+            <h1> Compare Agora </h1>
+            <br class="clear"/>
+
+            <!-- Tag panelGroup, utilizada como "substituto" para a tag div por ser uma tag JSF (NAO TIRAR ESSE ID JAMAIS) -->
+            <h:panelGroup id="id-panelGroup-areaItens">
+
+                <!-- Local onde os itens aparecerão após serem selecionados -->
+                <p:growl id="id-growl-mensagem" />
+
+                <div>
+                    <h:graphicImage library="img/" name="foto_comparacao.jpg"/>
+
+                    <div class="menu-transparente" >
+                        <p:column >
+                            <c:if test="#{empty cc.attrs.seletorItensFacil.itensSelecionados[0]}">
+                                <p:commandLink id="id-outPutLabel-areaItens1" styleClass="botao-pesquisar" onclick="PF('seletorOperadora').show();" action="onClick" >Selecione a Operadora</p:commandLink>
+                            </c:if>  
+                            <c:if test="#{not empty cc.attrs.seletorItensFacil.itensSelecionados[0]}">
+                                <div class="fl_left">
+                                    <p:graphicImage id="id-graphicImage-areaItens1" value="#{cc.attrs.seletorItensFacil.itensSelecionados[0].imgMedia}" styleClass="operadora-selecionada"  /> <!-- aonde aparece a IMG apos selecionar -->
+                                </div>
+                                <h:form>
+                                    <p:commandLink id="id-commandLink-areaItens1" actionListener="#{cc.attrs.seletorItensFacil.methodRemoveItem}">
+                                        <h:graphicImage library="resources/img/" id="id-outPutText-remover1" name="botao_fechar.png" alt=""/>
+                                        <f:setPropertyActionListener id="id-setPropertyActionListener-areaItens1" value="0" target="#{cc.attrs.seletorItensFacil.itemRemover}" />
+                                    </p:commandLink>
+                                </h:form>   
+                            </c:if>
+                        </p:column>
+
+                        <p:column styleClass="center">
+                            <c:if test="#{empty cc.attrs.seletorItensFacil.itensSelecionados[1]}">
+                                <p:commandLink id="id-outPutLabel-areaItens2" styleClass="botao-pesquisar" onclick="PF('seletorOperadora').show();" action="onClick">Selecione a Operadora</p:commandLink>
+                            </c:if> 
+
+                            <c:if test="#{not empty cc.attrs.seletorItensFacil.itensSelecionados[1]}">
+                                <div class="fl_left">
+                                    <p:graphicImage id="id-graphicImage-areaItens2" value="#{cc.attrs.seletorItensFacil.itensSelecionados[1].imgMedia}"  styleClass="operadora-selecionada" /> <!-- aonde aparece a IMG apos selecionar -->
+                                </div>
+                                <h:form>
+                                    <p:commandLink id="id-commandLink-areaItens2" actionListener="#{cc.attrs.seletorItensFacil.methodRemoveItem}">
+                                        <div style="position: absolute; left:5%; z-index: 200">
+                                            <h:graphicImage library="resources/img/" id="id-outPutText-remover2" name="botao_fechar.png" alt=""/>
+                                        </div>
+                                        <f:setPropertyActionListener id="id-setPropertyActionListener-areaItens2" value="1" target="#{cc.attrs.seletorItensFacil.itemRemover}" />
+                                    </p:commandLink>
+                                </h:form>
+                            </c:if>
+                        </p:column>
+
+                        <p:column styleClass="center">
+                            <c:if  test="#{empty cc.attrs.seletorItensFacil.itensSelecionados[2]}">
+                                <p:commandLink id="id-outPutLabel-areaItens3" styleClass="botao-pesquisar" onclick="PF('seletorOperadora').show();" action="onClick" >Selecione a Operadora</p:commandLink>
+                            </c:if>
+
+                            <c:if test="#{not empty cc.attrs.seletorItensFacil.itensSelecionados[2]}">
+                                <div class="fl_left">
+                                    <p:graphicImage id="id-graphicImage-areaItens3" value="#{cc.attrs.seletorItensFacil.itensSelecionados[2].imgMedia}"   styleClass="operadora-selecionada" /> <!-- aonde aparece a IMG apos selecionar -->
+                                </div>
+                                <h:form>
+                                    <p:commandLink id="id-commandLink-areaItens3" actionListener="#{cc.attrs.seletorItensFacil.methodRemoveItem}">
+                                        <div style="position: absolute; left:1%; z-index: 2000">
+                                            <h:graphicImage library="resources/img/" id="id-outPutText-remover3" name="botao_fechar.png" alt=""/>
+                                        </div>
+                                        <f:setPropertyActionListener id="id-setPropertyActionListener-areaItens3" value="2" target="#{cc.attrs.seletorItensFacil.itemRemover}" />
+                                    </p:commandLink>
+                                </h:form>
+                            </c:if>
+                        </p:column>
+                    </div>
+                </div>
+            </h:panelGroup>
+
+            <!-- Listagem de itens destacados por serem mais escolhidos para comparação (SUGESTOES DE COMPAÇÃO) -->
+            <h:panelGrid id="id-panelGrid-areaItens" columns="4" columnClasses="coluna1, coluna2, coluna3, coluna4, " width="100%" style="background-color: #DDECE9; border: 1px solid gray; margin-top: 3em">
+                <c:forEach id="id-forEach-areaItens" var="listaOrdenada" items="#{cc.attrs.seletorItensFacil.opcoesOrdenadas}">
+                    <p:panel id="id-panel-areaItens#{listaOrdenada.nomeJsfAmigavel}" style="background-color: #e7f1ef;">
+                        <p:outputLabel id="id-outPutLabel-areaItens#{listaOrdenada.nomeJsfAmigavel}" value="#{listaOrdenada.nomeLista}" style="font-family:georgia; color: white; background-color:#39A180; padding: 2px" />
+                        <br class="clear"/>
+                        <h:form id="id-form-areaItens#{listaOrdenada.nomeJsfAmigavel}">
+                            <sbc:seletorItem id="id-seletorItem-areaItens" TIPO_VIEW_GRADE="true" mostraTextoImagem="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-areaItens" lista="#{listaOrdenada.itens}" registro="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
+                        </h:form>
+                    </p:panel>
+                </c:forEach>
+            </h:panelGrid>
+
+
+            <!-- Botão responável por limpar os itens -->
+            <h:form>
+                <p:commandLink id="id-commandLink-limpar-itens-selecionados" value="LIMPAR OPERADORAS ADICIONADAS" action="#{cc.attrs.seletorItensFacil.mathodClearItems}" />
+            </h:form>
+
+            <br class="clear" />
+
+            <h:form>
+                <!-- Listagem de todos os itens que poderão ser selecionados para comparação -->
+                <p:dialog id="id-dialog-areaItensEspecificos" widgetVar="seletorOperadora" header="ModalDialog1" modal="true" height="500">
+                    <p:dataGrid id="id-dataGrid-areaItensEspecificos" var="item" value="#{cc.attrs.seletorItensFacil.opcoes}" columns="3">
+                        <div align="center" style="padding-bottom: 1em; background-color: #DDECE9;">
+                            <p:commandLink id="id-commandLink-areaItensEspecificos" update="@form" actionListener="#{cc.attrs.seletorItensFacil.methodShowMessage}" title="View Detail">
+                                <p:graphicImage id="id-graphicImage-areaItensEspecificos" value="#{item.imgMedia}" style="margin-bottom: 30px" />
+
+                                <h:outputText id="id-outPutTextArea-itensEspecificos" value="#{item}" />
+
+                                <h:commandButton id="id-commandButton-areaItensEspecificos" value="Compare Este" class="bassist" style="padding: 10px" />
+
+                                <f:setPropertyActionListener id="id-setPropertyActionListener-areaItensEspecificos" value="#{item}" target="#{cc.attrs.seletorItensFacil.itemSelecionado}" />
+
+                                <br class="clear"/>
+                            </p:commandLink>
+                        </div>
+                    </p:dataGrid>
+                </p:dialog>
+            </h:form>
+        </div>
+    </cc:implementation>
+</html>

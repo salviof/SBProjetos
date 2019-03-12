@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sbc="http://java.sun.com/jsf/composite/SBComp">
+<h:head>
+	<h:outputScript name="charts/charts.js" library="primefaces" />
+</h:head>
+<h:body>
+
+	<br />
+
+
+	<h:form>
+		<p:panel header="Testes com Primefaces" id="testes">
+			<p:commandButton value="Atualiza tela" update="testes"
+				styleClass="ui-priority-primary" />
+			<h:form id="form4">
+				<p:panelGrid columns="2" id="teste4">
+
+					<p:commandButton value="Atualiza EstePainel" update="form4"
+						styleClass="ui-priority-primary" />  
+				#{tester.cliteste.nomeCurto}
+				
+			</p:panelGrid>
+			</h:form>
+			<p:panel header="Testes com Links">
+				<p:commandButton value="Testeselecao"
+					actionListener="#{tester.mudarDePaginaPorTipoParametro}">
+				</p:commandButton>
+
+			</p:panel>
+
+
+			<p:panel header="Seletores">
+
+
+
+				<p:panelGrid columns="3">
+					<sbc:SeletorDeItem TIPO_VIEW_COMBO="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_COMBO_COMIMAGENS="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_COMBO_SOIMAGENS="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_MENUBUTTON="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_AUTO_COMPLETE="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_AUTO_COMPLETE_COMIMAGENS="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem TIPO_VIEW_CAROUSEL="true"
+						registro="#{tester.cliteste}" lista="#{tester.cliLista}" />
+					<sbc:SeletorDeItem registro="#{tester.cliteste}"
+						lista="#{tester.cliLista}" TIPO_VIEW_RADIO="true" />
+					<sbc:SeletorDeItem registro="#{tester.cliteste}"
+						lista="#{tester.cliLista}" TIPO_VIEW_RADIO_COM_IMAGENS="true" />
+					<sbc:SeletorDeItem registro="#{tester.cliteste}"
+						lista="#{tester.cliLista}" TIPO_VIEW_RADIO_SO_IMAGENS="true" />
+					
+				</p:panelGrid>>
+
+
+
+
+
+		</p:panel>
+
+
+			<p:panel header="Listas">
+
+			</p:panel>
+			
+			<p:panel header="Inputs Especiais">
+			</p:panel>
+
+			<p:panel header="Parametros Entrada Pagina">
+			</p:panel>
+
+			<p:panel header="Filtro Pagina"></p:panel>
+
+			<p:panel header="Menu SiteMap"></p:panel>
+
+			<p:panel header="mapas">
+			</p:panel>
+<p:panel header="Outros" >
+<p:clock  mode="server" ></p:clock>
+<p:calendar ></p:calendar>
+
+</p:panel>
+
+
+		</p:panel>
+
+		<p:log id="logPrime" />
+
+	</h:form>
+
+</h:body>
+</html>

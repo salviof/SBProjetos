@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"        
+      xmlns:p="http://primefaces.org/ui"
+      >
+	
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="mapaCompleto" required="true"/>       
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+   
+   <h:form>
+<p:inputText id="cepLocalizacao" value="#{cc.attrs.mapaCompleto.cepLocalizacao}" required="true" label="Digite seu CEP" />  
+        <p:watermark for="cepLocalizacao" value="Digite seu cep" /> 	
+    <p:panel header="Mapa da Rede Credenciada">
+			
+			  <p:gmap center="-19.9224664,-43.936274" type="ROADMAP" zoom="15" 
+				style="width:auto;height:400px" model="#{cc.attrs.mapaCompleto.mapa}" >
+		
+   		<p:ajax event="overlaySelect" listener="#{cc.attrs.mapaCompleto.onMarkerSelect}" />
+        		<p:gmapInfoWindow>  
+            	<p:outputPanel style="text-align:center;display:block;margin:auto;">  
+					<p:graphicImage value="#{cc.attrs.mapaCompleto.registroSelecionado.imgMedia}" /><br />
+					<h:outputText value="#{cc.attrs.mapaCompleto.marcador.title}" />  <br /><br />              			
+					<h:outputText value="#{cc.attrs.mapaCompleto.registroSelecionado.descritivo}" />;<br />   
+					<h:outputText value="#{cc.attrs.mapaCompleto.registroSelecionado.descritivo}" />;<br />
+					<h:outputText value="#{cc.attrs.mapaCompleto.registroSelecionado.descritivo}" />;<br />
+					<h:outputText value="#{cc.attrs.mapaCompleto.registroSelecionado.descritivo}" />;<br />
+					<h:outputText value="#{cc.attrs.mapaCompleto.registroSelecionado.descritivo}" />;<br />
+					askdjflkajsdfjalskdjflaksjdfajslkdfjlaksjdfajsdf jalksdjflaksjd asldkjf lkasjdfl asldkfj laksjdflakjsdjsldkfjlkasjdfljsldkjflak lkasdj flakjsdfl kaj
+            	</p:outputPanel>
+            	</p:gmapInfoWindow>
+            </p:gmap>
+		</p:panel>
+   
+</h:form>
+       
+    </cc:implementation>
+</html>
+
+
+
+      
+     
+
+
+
+
+	
+		

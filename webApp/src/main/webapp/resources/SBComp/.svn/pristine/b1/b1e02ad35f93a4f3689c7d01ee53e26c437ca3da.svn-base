@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+	xmlns:sbc2="http://java.sun.com/jsf/composite/SBComp"
+	>
+<h:head>
+	<h:outputScript name="charts/charts.js" library="primefaces" />
+</h:head>
+<h:body>	
+<p:selectOneListbox converter="conversorGenerico" id="testeSelecao" value="#{pgTesteTelas.operadora}" >							
+ 	<f:selectItems value="#{pgTesteTelas.operadoras}" var="registro" itemLabel="#{registro.nomeCurto}"  itemValue="#{registro}"/>
+#{registro.nomeCurto}
+
+ <p:graphicImage  value="#{op.imgMedia}" />
+			
+	
+</p:selectOneListbox>
+
+#{pgTesteTelas.operadora}	<br />
+#{pgTesteTelas.operadoras}	<br />
+
+	<br /><br />
+	
+	
+	 <p:selectOneListbox converter="conversorGenerico" var="opp" value="#{pgTesteTelas.operadora}">
+          <f:selectItems value="#{pgTesteTelas.operadoras}" var="op"  itemValue="#{op}"  itemLabel="#{op.nomeCurto}" />
+ 
+            <p:graphicImage  value="#{op.imgMedia}" />asdfasdf
+	  			<p:column>  
+	                <p:graphicImage value="#{op.imgMedia}" width="40"/>  
+	            </p:column>  
+  
+            <p:column>  
+                #{opp.nomeCurto}   
+            </p:column>  
+            
+ </p:selectOneListbox>
+ 
+ 
+ 
+ 
+ 
+ 
+	
+	
+	
+	<p:panel header="selecao Por Ordem Alfabetica">
+	
+	
+	</p:panel>
+	
+	
+	<p:panel header="selecao Por Ordem de Mercado">
+	<p:tabView>
+ <p:selectOneListbox converter="conversorGenerico" var="teste" >
+ <f:selectItems value="#{pgTesteTelas.operadoras}" var="op"  itemValue="#{op}"  itemLabel="#{op.nomeCurto}" />
+ <p:graphicImage  value="#{op.imgMedia}" />asdfasdf
+
+ </p:selectOneListbox>
+	
+	</p:tabView>
+	
+	</p:panel>
+	
+	
+<br /> <br />	<br />	<br />	<br />	<br />	<br />	<br />	<br />		
+	<p:separator/>
+<h:form>
+ 
+ 
+ 
+ 
+
+<p:panel header="Objetos" >
+
+<p:panel header="Operadora" >
+<p:panelGrid columns="2" >
+
+<p:outputLabel value="Nome"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.nomeCurto}" /> 
+
+<p:outputLabel value="cep"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.CEP}" />
+
+<p:outputLabel value="Endereco"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.endereco}" />
+
+<p:outputLabel value="complemento"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.complemento}" /> 
+
+
+<p:outputLabel value="Bairro"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.bairro.nomeCurto}" /> 
+
+
+<p:outputLabel value="cidade"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.cidade.nome}" /> 
+
+
+
+<p:outputLabel value="Clinica"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.clinicas}" /> 
+
+<p:outputLabel value="hospitais"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.hospitais}" /> 
+
+<p:outputLabel value="Laboratorios"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.laboratorios}" /> 
+
+<p:outputLabel value="Especialistas"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.especialistas}" /> 
+
+<p:outputLabel value="Total Clinicas"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.totalClinicas}" /> 
+
+<p:outputLabel value="Total Laboratorios"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.totalLaboratorios}" /> 
+
+<p:outputLabel value="total Hospitais"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.totalHospitais}" /> 
+
+<p:outputLabel value="Coletivos (Sindicatos,Conselhos e Associações)"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.coletivos}" /> 
+
+<p:outputLabel value="tiposDePlano"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.tiposDePlano}" /> 
+
+<p:outputLabel value="Reclamacoes ANS nota"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.ultimaReclamacaoANS.nota}" /> 
+<p:outputLabel value="Reclamacoes ANS DAta"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.ultimaReclamacaoANS.data}" /> 
+
+<p:outputLabel value="Ultimas Reclamações"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.ultimasReclamacoesANS}" /> 
+
+<p:outputLabel value="Reclamacoes (Todas)"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.reclamacoesANS}" />   
+
+<p:outputLabel value="UltimoIDSS Valor "/>
+<p:outputLabel value="#{pgTesteTelas.operadora}" />   
+
+<p:outputLabel value="UltimoIDSS data"/>
+<p:outputLabel value="#{pgTesteTelas.operadora}" />   
+
+<p:outputLabel value="Tipos de Contrato"/>
+<p:outputLabel value="#{pgTesteTelas.operadora.tiposDeCOntrato}" />   
+
+</p:panelGrid> 
+
+</p:panel>
+</p:panel>
+
+
+<p:separator/>
+ <sbc:seletorListaGrade itemSelecionado="#{pgTesteTelas.operadora}"  itens="#{pgTesteTelas.operadoras}" />
+
+
+<p:panelGrid   columns="1">
+<p:outputLabel value="SELECIONE A OPERADORA" />
+
+</p:panelGrid>
+
+
+<p:panel id="painel" header="Teste" >
+#{pgTesteTelas.operadora}
+</p:panel>
+<p:commandButton action="#{pgTeleVendas.selecionaLista}" update="painel" />
+</h:form>
+
+</h:body>
+</html>

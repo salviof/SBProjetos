@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:cc="http://java.sun.com/jsf/composite"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+	>
+
+<!-- INTERFACE -->
+<cc:interface>
+	<cc:attribute name="dados" type="com.super_bits.SBFW.ModelInfo.dao.DataSet"/>
+        <cc:interface shortDescription="Monta uma tela crud completa especificando apenas a tabela"/>
+        
+</cc:interface>
+<!-- IMPLEMENTATION -->
+<cc:implementation>
+
+	<h:form>
+
+
+<p:panel header="Edicao de registro" id="registroInfo">
+		  <img src="#{cc.attrs.dados.registro.imgMedia}"/> 
+#{cc.attrs.dados.indexRegistroAtual}
+	<p:panelGrid columns="3" >
+	
+			<c:forEach items="#{cc.attrs.dados.registro.camposEncontrados}"
+				var="opcao" begin="0">  
+		
+			    <sbc:input campo="#{opcao}" dados="#{cc.attrs.dados.registro.valorCampoByName[opcao.nomeCamponaClasse]}"/>				
+	</c:forEach>
+		</p:panelGrid>
+</p:panel> 
+          <p:commandButton value="Anterior" actionListener="#{cc.attrs.dados.anterior}"  
+          update="registroInfo" icon="ui-icon-disk" />
+<p:commandButton value="Proximo" actionListener="#{cc.attrs.dados.proximo}"  
+          update="registroInfo" icon="ui-icon-disk" />
+          
+<p:commandButton value="salvar Alterações" actionListener="#{cc.attrs.dados.salvar}"  
+          update="registroInfo" icon="ui-icon-disk" />
+          
+<p:commandButton value="NOVO Registro" actionListener="#{cc.attrs.dados.novo}"  
+          update="registroInfo" icon="ui-icon-disk" />          
+                        
+
+            
+
+	</h:form>
+
+
+
+
+
+
+
+
+
+
+</cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

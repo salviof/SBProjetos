@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"  
+  
+		xmlns:ui="http://java.sun.com/jsf/facelets" 
+	
+ 
+
+      
+      xmlns:p2="http://primefaces.org/ui"
+      >
+	
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="dados" />
+        <cc:attribute name="nome" type="String"/>
+        <cc:attribute name="validador" method-signature="void action()" shortDescription="Método para fazer a validação do CPF" />
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+    asdasdasd
+    <c:if test="#{param['name'] != null}">    
+	<h1>Fala conhecido</h1>
+    </c:if>
+       <c:if test="#{param['name'] == null}">    
+	<h1>Fala anonimo</h1>
+    </c:if>
+
+         <h:form id="personsForm">
+				<p2:dataTable id="personsTable2" value="#{cc.attrs.dados.todos}" var="registro" emptyMessage="Sem registro" paginator="true" rows="5"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p2:column>
+					<f:facet name="header">
+					<h:outputText value="Nome" />
+					</f:facet>
+					<h:outputText value="#{registro.nome}" /></p2:column>
+
+					<p2:column>
+			    	<f:facet name="header">
+					<h:outputText value="endereco" />
+					</f:facet>
+
+					<h:outputText value="#{registro.endereco}" />
+					</p2:column>
+					</p2:dataTable>
+				
+			</h:form> 
+   
+   
+       
+    </cc:implementation>
+</html>
+
+
+
+      
+     
+
+
+
+
+	
+		

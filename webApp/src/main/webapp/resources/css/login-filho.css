@@ -1,0 +1,18 @@
+@import url(http://localhost:8084/SBComp/template/basico/css/login-pai.css);
+.teste {
+    background-image: url("resource['img/botao_login.png']}") !important;
+}
+.botao-login {
+    font-size: 1.1em;
+    font-family: Verdana, Arial, Helvetica;
+    background-color:  #{pgUtil.corBackground};;
+    color: red;
+    position: absolute;
+    left: 980px;
+    bottom: -44px;
+    z-index: 1002;
+}
+
+
+
+

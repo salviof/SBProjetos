@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+
+      xmlns:pe="http://primefaces.org/ui/extensions"
+      >
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="urlImagemPequena" type="java.lang.String" required="true"/>
+        <cc:attribute name="urlImagemGrande"  type="java.lang.String" required="true"/>
+        <cc:attribute name="tipoZoom" type="java.lang.String" default="externo" shortDescription="[interno]-> Zoom dentro da propria imagem, [externo]-> Zoom fora da imagem, [lupa]" />
+    </cc:interface>
+    <!-- IMPLEMENTATION
+    *****************
+    OS EXEMPLOS DESTE JAVASCRIPT SE ENCONTRAM EM: http://zoomsl.sergeland.ru/example/
+
+    CASO O COMPONENTE APAREÇA APENAS VIA AJAX é nescessário importar o script zoomSL na pagina principal
+
+    -->
+    <cc:implementation>
+
+        <h:outputScript target="head"  library="SBComp/js" name="zoomsl-3.0.min.js" />
+
+
+
+
+        <img class="foto#{cc.id}" src="#{cc.attrs.urlImagemPequena}"   data-title="Dica:"  data-help="Utiliza o Scrool do mouse"
+             data-large="#{cc.attrs.urlImagemGrande}" style="visibility: visible;"  />
+
+
+
+
+
+        <pe:switch value="#{cc.attrs.tipoZoom}" >
+            <pe:defaultCase >
+                <script>
+
+
+                    jQuery(function () {
+
+                        $(".foto#{cc.id}").imagezoomsl({
+                            zoomrange: [5, 12],
+                            magnifiersize: [530, 340],
+                            scrollspeedanimate: 10,
+                            loopspeedanimate: 5,
+                            cursorshadeborder: "10px solid black",
+                            magnifiereffectanimate: "slideIn"
+
+                        });
+                    });
+
+
+
+                </script>
+            </pe:defaultCase>
+            <pe:case value="interno" >
+
+                <script>
+                    jQuery(function () {
+
+                        $(".foto#{cc.id}").imagezoomsl({
+                            zoomrange: [1, 12],
+                            zoomstart: 4,
+                            innerzoom: true,
+                            magnifierborder: "none"
+                        });
+                    });
+                </script>
+
+            </pe:case>
+
+            <pe:case value="lupa" >
+
+                <script>
+                    jQuery(function () {
+
+                        $(".foto#{cc.id}").imagezoomsl({
+                            innerzoommagnifier: true,
+                            classmagnifier: window.external ? window.navigator.vendor === 'Yandex' ? "" : 'round-loope' : "",
+                            magnifierborder: '5px solid #F0F0F0',
+                            zoomrange: [2, 8],
+                            zoomstart: 4,
+                            magnifiersize: [150, 150]
+                        });
+
+
+                    });
+                </script>
+            </pe:case>
+        </pe:switch>
+
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

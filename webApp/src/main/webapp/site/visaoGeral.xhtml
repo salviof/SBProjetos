@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:gerenciador="http://java.sun.com/jsf/composite/gerenciador"
+      >
+
+    <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
+
+        <ui:define name="head"  >
+            <h:outputStylesheet  name="css/gerenciador.css" />
+            <h:outputStylesheet  name="css/login-filho.css" />
+        </ui:define>
+
+        <ui:define name="divConteudo">
+            #{pgVisaoGeral.descricao}
+            <!-- Inicio Cabeçalho -->
+            <div id="container">
+                <p:panel id="projetos">
+                    <c:forEach items="#{pgVisaoGeral.projetos}" var="projeto" >
+                        <p:panel id="#{projeto.nomeUnico}" >
+                            <gerenciador:infoProjeto projeto="#{projeto}"   />
+                        </p:panel>
+                    </c:forEach>
+
+                </p:panel>
+
+            </div>
+
+        </ui:define>
+
+
+
+    </ui:composition>
+
+
+
+
+
+
+
+</html>

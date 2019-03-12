@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="crud"
+                      type="com.super_bits.modulosSB.Persistencia.dao.ItfCRUDDataSet" required="true"/>
+        <cc:attribute name="metodoMudaRegistro"  />
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+
+
+        <p:commandButton icon="ui-icon-plusthick" actionListener="#{cc.attrs.crud.novo()}" update="@form" value="Novo" >
+            <f:actionListener binding="#{cc.attrs.metodoMudaRegistro}"/>
+        </p:commandButton>
+        <p:commandButton  icon="ui-icon-circle-check" actionListener="#{cc.attrs.crud.salvar()}" update="@form" value="Salvar Alteracoes" />
+        <p:commandButton  icon="ui-icon-circle-minus" actionListener="#{cc.attrs.crud.delete()}" update="@form" value="Excluir Registro" >
+            <f:actionListener binding="#{cc.attrs.metodoMudaRegistro}"/>
+        </p:commandButton>
+        <p:commandButton  icon="ui-icon-circle-triangle-e" actionListener="#{cc.attrs.crud.proximo()}" update="@form"  process="@form" value="Proximo Registro"  >
+            <f:actionListener binding="#{cc.attrs.metodoMudaRegistro}"/>
+        </p:commandButton>
+
+
+        <p:commandButton  icon="ui-icon-circle-triangle-w" actionListener="#{cc.attrs.crud.anterior()}" update="@form" process="@form" value="Registro Anterior" >
+            <f:actionListener binding="#{cc.attrs.metodoMudaRegistro}"/>
+        </p:commandButton>
+        <p:commandButton  icon="ui-icon-refresh" update="@form"  process="@form" action="#{pgAcessos.mudaListaTeste()}" value="Atualizar"  />
+        Registro: #{cc.attrs.crud.indexRegistroAtual+1} de #{cc.attrs.crud.quantidade}
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

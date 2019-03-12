@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	  
+	xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+	
+	xmlns:sbp="http://java.sun.com/jsf/composite/SBComp/prime">
+<h:head>
+	<h:outputScript name="charts/charts.js" library="primefaces" />
+</h:head>
+<h:body>
+
+
+	<br />
+	<sbc:linkComDetalhes registro="#{pgTesteTelas.operadora}" enderecoPessoaF="true" />
+	<br />
+	<sbc:linkComDetalhes registro="#{pgTesteTelas.operadora}" enderecoPessoaJ="true" />
+
+	<sbc:telaCelular/>
+	
+
+
+
+
+
+</h:body>
+</html>

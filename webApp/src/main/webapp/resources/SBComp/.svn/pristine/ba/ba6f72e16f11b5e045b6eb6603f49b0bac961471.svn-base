@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      >
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="cpf" type="String"/>
+        <cc:attribute name="nome" type="String"/>
+        <cc:attribute name="validador" method-signature="void action()" shortDescription="Método para fazer a validação do CPF" />
+    </cc:interface>
+    <h:form id="personsForm">
+        <p:dataTable id="personsTable" value="#{tabOperadora_MB.todos}" var="registro" emptyMessage="Sem registro" paginator="true" rows="5"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     rowsPerPageTemplate="5,10,15">
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Nome" />
+                </f:facet>
+                <h:outputText value="#{registro.nome}" /></p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="endereco" />
+                </f:facet>
+
+                <h:outputText value="#{registro.endereco}" />
+            </p:column>
+        </p:dataTable>
+
+    </h:form> 
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

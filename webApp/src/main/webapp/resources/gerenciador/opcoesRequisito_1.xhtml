@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+        <cc:attribute name="requisito" type="com.super_bits.SBProject.Model.Requisito" required="true" />
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        
+        <!-- botao para cima e para baixo apos barra de progresso, (nunca vi tanta treta pra um spin) -->
+        <h:panelGrid columns="2" >
+
+            <c:if test="#{cc.attrs.requisito.statusRequisito.id!=1}" >
+                <c:if test="#{cc.attrs.requisito.statusRequisito.id le 3}" >
+                    <h:form>
+                        <p:commandButton icon="ui-icon-arrowthick-1-n" actionListener="#{pgVisaoGeral.promoverRequisito(cc.attrs.requisito)}"  update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.requisito.projeto.nomeUnico)}"/>
+                    </h:form>
+                </c:if>
+                <h:form>
+                    <p:commandButton icon="ui-icon-arrowthick-1-s" actionListener="#{pgVisaoGeral.rebaixarRequisito(cc.attrs.requisito)}"  update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.requisito.projeto.nomeUnico)}" />
+                </h:form>
+
+
+
+            </c:if>
+            <c:if test="#{cc.attrs.requisito.statusRequisito.id==1}" >
+                <h:form>
+                    Horas Estimadas:   <p:spinner value="#{cc.attrs.requisito.horasEstimadas}" min="0" />
+                    <p:commandButton icon="ui-icon-arrowthick-1-n" actionListener="#{pgVisaoGeral.promoverRequisito(cc.attrs.requisito)}"  update="#{pgUtil.makeCaminhoCompletoID(cc.attrs.requisito.projeto.nomeUnico)}"/>
+                </h:form>
+            </c:if>
+
+
+
+        </h:panelGrid>
+
+
+    </cc:implementation> 
+</html>
+
+
+
+
+
+
+
+
+
+

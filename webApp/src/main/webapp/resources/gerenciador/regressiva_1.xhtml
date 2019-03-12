@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="projeto" type="com.super_bits.SBProject.Model.Projeto"/>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+        <!-- Inicio "calendario de horas" -->
+        <div style=" text-align: left;">
+
+            <div style="text-align: center">
+            <div class="calendario">
+                <a>Dias</a>
+                <p>#{cc.attrs.projeto.regressivaFimVersao[0]} </p>
+            </div>
+            <div class="calendario">
+
+                <a> Para Próxima Versão </a>
+            </div>
+</div>
+            <p:panelGrid columns="4" style="width: 500px;" >
+                <p:outputLabel value="Pré requisito" />
+                <p:outputLabel value="Data Solicitacao" />
+                <p:outputLabel value="Data LIMITE" />
+
+                <p:outputLabel value="Justificativa" />
+
+                <c:forEach items="#{cc.attrs.projeto.preRequisitos}" var="preRequisito" >
+                    <p:outputLabel value="#{preRequisito.nomePreRequisito}" />
+                    <p:outputLabel value="#{preRequisito.dataSolicitacao}" />
+                    <p:outputLabel value="#{preRequisito.dataLimite}" style="color: red;" />
+                    <p:outputLabel value="#{preRequisito.justificativa}" />
+
+
+                </c:forEach>
+            </p:panelGrid>
+        </div><br/>
+        <i> Data da entrega #{cc.attrs.projeto.dataFimVersaoProjetoString},
+            Horas de trabalho para proxima Versão
+            #{cc.attrs.projeto.horasRestantesProximaVersao}  </i>
+
+        <!-- fim "calendario de horas" -->
+
+
+
+    </cc:implementation> 
+</html>
+
+
+
+
+
+
+
+
+
+

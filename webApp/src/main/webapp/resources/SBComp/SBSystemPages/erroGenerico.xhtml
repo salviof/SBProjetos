@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:SBLogin="http://xmlns.jcp.org/jsf/composite/SBComp/login"
+
+
+    xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+    xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <head>
+        <title>Erro ao criar a view</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+
+    if <c:if test="#{pfExceptionHandler==null}" >
+        pfExeceptonNãoCapturado
+        teste:
+        #{infoErroCritico.printStack}
+
+
+
+    </c:if>
+
+
+    <body>
+        Erro: #{infoErro.erro}
+        <h1>ACONTECEU UM ERRO INESPERADO, AO GERAR ESTA PAGINA </h1>
+
+        <BR/>
+        Siga as dicas Abaixo para tentar solucionaro o problema
+        <BR/> <BR/>
+
+        <font color="blue" > <h2> Mensagem: #{pfExceptionHandler.message}</h2> </font>
+        <br/>
+        <font color="red" > <h2>  Tipo: #{pfExceptionHandler.type} <br/></h2></font>
+        causa: #{pfExceptionHandler.exception.cause}
+        localized Mensassage #{pfExceptionHandler.exception.localizedMessage}
+        <br/>  <br/>
+        Informações complementares:
+        <c:forEach items="#{pfExceptionHandler.exception.suppressed}" var="erroAnexo" >
+            Erro Complementar:  #{erroAnexo.message}
+        </c:forEach>
+
+
+        <br/> <br/>
+        <h2>   StackTrace (Caminho do Erro:): </h2>
+        <br/>
+        <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /> <br />
+
+        ********** Esta pagina não é capaz de coletar mensagens em componentes compostos,
+        verifique o system.out no servidor tomcat para descobrir o problema se for este o caso
+    </body>
+</html>

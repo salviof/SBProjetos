@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:SBComp="http://java.sun.com/jsf/composite/SBComp"
+      xmlns:p="http://primefaces.org/ui"
+
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      >
+
+    <!-- INTERFACE -->
+    <cc:interface>
+
+
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+
+
+        <p:dialog  header="Configuração de Cores" widgetVar="modalCores" minHeight="40" closable="true"  >
+
+
+
+            <p:tabView orientation="left">
+                <p:tab title="Cores SuperBits CSS">
+
+
+                    <h:form>
+
+                        <p:panelGrid columns="2"   >
+
+                            <h:outputText value="pgUtil.cores.corAction " />
+                            <p:colorPicker  value="#{pgUtil.cores.editorCorAction}" />
+                            <h:outputText value="pgUtil.cores.corBackground" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorBackground}" />
+
+                            <h:outputText value="pgUtil.cores.corBorda" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorBorda}" />
+                            <h:outputText value="pgUtil.cores.corComplementa" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorComplementa}" />
+                            <h:outputText value="pgUtil.cores.corFonte" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorFonte}" />
+                            <h:outputText value="pgUtil.cores.corFundo1" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorFundo1}" />
+                            <h:outputText value="pgUtil.cores.corFundo2" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorFundo2}" />
+                            <h:outputText value="pgUtil.cores.corHeader" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorHeader}" />
+                            <h:outputText value="pgUtil.cores.corHover" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorHover}" />
+                            <h:outputText value="pgUtil.cores.corOpacidade" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorOpacidade}" />
+                            <h:outputText value="pgUtil.cores.corTitulo" />
+                            <p:colorPicker value="#{pgUtil.cores.editorCorTitulo}" />
+
+                        </p:panelGrid>
+                        <p:commandButton  value="Alterar sem salvar" update="@form:@parent:@parent"  />
+
+                        <p:commandButton  actionListener="#{pgUtil.cores.salvarCores()}" value="salvar permanente neste Servidor"  />
+                    </h:form>
+
+                </p:tab>
+                <p:tab title="Temas:">
+                    <br/><br/><br/><br/>
+                    <h:form >
+                        <p:panel header="Tema Oficial">
+                            <SBComp:seletorItem registro="#{pgUtil.tema.temaOficial}" lista="#{pgUtil.tema.temasDisponiveis}" TIPO_VIEW_COMBO="true" mostraTextoImagem="true" />
+
+                            <p:commandButton value="Alterar sem salvar" />
+                            <p:commandButton value="Salvar Permanente neste servidor" />
+                        </p:panel>
+                    </h:form>
+
+                    <p:panel header="Importar Tema personalizado por Themeroller " >
+
+                        <h2>IMPORTANTE:</h2>
+
+                        <p:outputLabel value="PARA EDITAR O CSS PERSONALIZADO, ABRA A PASTA WEB-APP/RESOURCES/primefaces-temaPersonalizado, theme.css"/>
+                        <br/><br/>
+                        <p:outputLabel value="É importante alterar o tema oficial para 'Tema Personalizado'"/>
+
+                        <br/><br/>
+                        <p:link target="themeRoler" href="http://jqueryui.com/themeroller/" value="Ir para pagina ThemeRoller em nova Aba"  />
+
+
+                        <h:form enctype="multipart/form-data">
+
+                            <p:fileUpload fileUploadListener="#{pgUtil.tema.importarRollerTheme}" update="#{pgUtil.makeCaminhoCompletoID('mensagemUsuario')}" />
+
+
+
+                        </h:form>
+                    </p:panel>
+
+
+                </p:tab>
+                <p:tab title="Salvar Ressources permanente">
+
+                    <p:outputLabel value="  Utilize este botão para copiar os arquivos da pasta resources do tomcat em execução para a pasta oficial de desenvlovimento, salvando as alterações
+                                   de forma permanente e oficial."/>
+
+
+                    <h:form>
+                        <p:commandButton actionListener="#{pgUtil.copiarRessource}" value="Copiar a pasta ressource para ambiente de desenvolvimento" update="@form"/>
+                    </h:form>
+
+                </p:tab>
+            </p:tabView>
+
+        </p:dialog>
+
+
+
+
+
+
+
+        <h:form >
+            <p:commandButton actionListener="#{pgUtil.cores.salvarCores}" value="salvarPermante" />
+        </h:form>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        teste3
+        <h:form >
+            <p:commandButton value="Editar Cores e Temas " type="button" onclick="PF(
+                            'modalCores').show();" />
+
+
+
+        </h:form>
+        <h:form id="formInfoPagina" >
+            <p:commandButton value="Atualizar info" update="formInfoPagina" />
+            Data Criação:   #{paginaAtual.datahoraAbertura}
+
+            Arquivo XHTML #{paginaAtual.infoPagina.recursoXHTML}
+            <p:panel header="Documentação Técnica da Página" style="width:1500px;" >
+
+                <p:panelGrid columns="1">
+                    <p:panelGrid columns="2">
+                        <p:outputLabel value="Bean de acesso:"/>
+                        <p:outputLabel value="#{paginaAtual.infoPagina.nomeMB}"/>
+
+                    </p:panelGrid>
+                    <p:panel header="IDS NESCESSÁRIOS">
+                        <p:panelGrid columns="2">
+                            <c:forEach items="#{paginaAtual.infoPagina.infoIds}" var="info">
+
+                                <p:outputLabel value="#{info.key}"/>
+                                <p:outputLabel value="#{info.value}"/>
+                            </c:forEach>
+                        </p:panelGrid>
+
+                    </p:panel>
+
+                    <p:panel header="WidGets Nessessários" >
+                        Widget são utilizados para referencia do primefaces em vez do ID, um exemplo é o p:Dialog onde o show e hide são chamados pelo nome do widget
+                        <br/> Muitos components do Primefaces possuem eventos, e podem ser acessados lançando comandos Javascript utilizando a syntaxe: PF('nomeDowWidgetQueNesteCasoéUmPdialog').hide(); ou .show()
+                        <p:panelGrid columns="2">
+                            <c:forEach items="#{paginaAtual.infoPagina.infoWidget}" var="info">
+
+                                <p:outputLabel value="#{info.key}"/>
+                                <p:outputLabel value="#{info.value}"/>
+                            </c:forEach>
+                        </p:panelGrid>
+
+                    </p:panel>
+
+                    <p:panel header="INFOBEAN"  >
+                        <p:panelGrid columns="4" >
+
+                            <p:outputLabel value="Tipo"/>
+                            <p:outputLabel value="acesso ([chamada])"/>
+                            <p:outputLabel value="Descricao"/>
+                            <p:outputLabel value="aplicacao"/>
+                            <c:forEach items="#{paginaAtual.infoPagina.infoBeans}" var="bean" >
+                                <p:outputLabel value="#{bean.classe}"/>
+                                <p:outputLabel value="#{bean.chamada}"/>
+                                <p:outputLabel value="#{bean.descricao}"/>
+                                <p:outputLabel value="#{bean.exemplo}"/>
+                            </c:forEach>
+
+
+                        </p:panelGrid>
+
+
+                    </p:panel>
+
+                    <p:panel header="Acoes:" >
+
+                        <p:panelGrid columns="2" >
+                            <p:outputLabel value="Acesso ([chamada])"/>
+                            <p:outputLabel value="Descricao"/>
+                            <p:outputLabel value="teste"/>
+                            <c:forEach items="#{paginaAtual.infoPagina.infoAcoes}" var="acao" >
+                                <p:outputLabel value="teste"/>
+                                <p:outputLabel value="#{acao.chamada}"/>
+                                <p:outputLabel value="#{acao.descricao}"/>
+                            </c:forEach>
+                        </p:panelGrid>
+                    </p:panel>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+
+
+        <!-- CODIGO PARA TRATAMENTO DE ERROS DE BEANS -->
+        <p:ajaxExceptionHandler type="javax.faces.application.ViewExpiredException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:ajaxExceptionHandler type="java.lang.NullPointerException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:ajaxExceptionHandler type="java.lang.IllegalStateException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:ajaxExceptionHandler type="java.lang.IllegalArgumentException "
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:ajaxExceptionHandler type="org.jboss.weld.context.NonexistentConversationException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:ajaxExceptionHandler type=" org.jboss.weld.context.NonexistentConversationException"
+                                update="exceptionDialog"
+                                onexception="PF('exceptionDialog').show();" />
+
+        <p:dialog id="exceptionDialog" header="Ouve lançamento de exceção não tratada: '#{pfExceptionHandler.type}' !" widgetVar="exceptionDialog"
+                  height="500px">
+            <h:outputText value="Mensagem: #{pfExceptionHandler.message}" /> <br/>
+            <h:outputText value="StackTrace: " /> <h:outputText value="#{pfExceptionHandler.formattedStackTrace}" escape="false" /> <br />
+
+            <p:button onclick="document.location.href = document.location.href;"
+                      value="Tentar novamente"
+                      rendered="#{pfExceptionHandler.type == 'javax.faces.application.ViewExpiredException'}" />
+        </p:dialog>
+
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

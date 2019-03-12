@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+
+    <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
+
+
+
+
+
+        <ui:define name="divConteudo">
+
+            <br/> <center>
+                <h:form>
+                    <p:commandButton value="Atualizar Configurações de Segurança (clique aqui após salvar as alterações)" actionListener="#{pgAcessos.atualizarPermicao()}" />
+                </h:form>
+            </center>
+            <br/>
+
+            <p:tabView styleClass="ui-alinhamento-formularioCentral"  dynamic="true"  orientation="Left">
+
+                <p:ajax event="tabChange" listener="#{pgAcessos.atualizarDados()}"/>
+                <p:tab title="Cadastro de Grupos"  >
+
+
+
+                    <h:form>
+                        <p:inputText value="#{pgAcessos.grupoUsuariosCrud.registro.nome}"/>
+                        <p:inputText value="#{pgAcessos.grupoUsuariosCrud.registro.descricao}"/>
+                        <SBComp:seletorItens  pickList="#{pgAcessos.pickListUsuarioEmGrupo}" NomeItensSelecionados="Usuários do grupo: #{pgAcessos.grupoUsuariosCrud.registro}" NomeOrigemItens="Usuários fora do grupo"/>
+
+
+
+                        <br/><br/>
+                        <SBComp:CRUDNavegador crud="#{pgAcessos.grupoUsuariosCrud}" metodoMudaRegistro="#{pgAcessos.mudaListaTeste()}"/>
+                    </h:form>
+
+
+                </p:tab>
+
+
+                <p:tab title="Cadastro de Usuários"  >
+
+                    <h:form>
+                        <p:fieldset id="cadastroUsuario" legend="Cadastro de Usuarios" >
+
+                            <h:message for="cadastroUsuario" style="color:red;" />
+                            <p:outputLabel value="Nome"/> <p:inputText value="#{pgAcessos.usuariosCrud.registro.nome}"/>
+                            <p:outputLabel value="Senha"/>    <p:password redisplay="true" value="#{pgAcessos.usuariosCrud.registro.senha}" />
+                            <p:outputLabel value="Email"/>   <p:inputText value="#{pgAcessos.usuariosCrud.registro.email}"/>
+                            <p:outputLabel value="Grupo Principal"/> <SBComp:seletorItem TIPO_VIEW_COMBO="true" lista="#{pgAcessos.grupoUsuariosCrud.registros}" registro="#{pgAcessos.usuariosCrud.registro.grupo}"/>
+
+
+
+
+
+
+
+
+                            <br/><br/>
+                            <SBComp:CRUDNavegador crud="#{pgAcessos.usuariosCrud}"/>
+
+                        </p:fieldset>
+                    </h:form>
+
+
+
+                </p:tab>
+
+
+
+                <p:tab title="Permissão">
+                    <p:tabView >
+                        <p:tab title="Acesso a recursos" >
+                            <p:fieldset legend="ACESSO A SER CONFIGURADO">
+                                <h:form>
+                                    <SBComp:seletorItem TIPO_VIEW_COMBO="true" atualizaPorIdOnChange="true" parametroIdOnChange="id-panelGroup-acessos" registro="#{pgAcessos.acessoSelecionado}" lista="#{pgAcessos.acessos}" />
+
+                                    <br /><br />
+
+                                </h:form>
+                            </p:fieldset>
+
+                            <br /><br />
+
+
+                            <h:panelGroup id="id-panelGroup-acessos">
+
+                                <p:panelGrid columns="2" >
+                                    <p:panelGrid id="id-panelGrid-areaUsuarios" columns="3">
+                                        <f:facet name="header">
+                                            <p:row>
+                                                <h:outputText value="PERMISSÕES POR USUÁRIOS: #{pgAcessos.acessoSelecionado} " />
+                                            </p:row>
+                                        </f:facet>
+
+
+                                        <p:fieldset legend="Liberar ou Negar Acessos">
+                                            <h:form>
+                                                <p:column headerText="Usuários Disponíveis">
+                                                    <ui:repeat var="usuario" value="#{pgAcessos.acessoSelecionado.usuariosDisponiveis}">
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-usuariosDisponiveis" value="#{usuario.nome}" />
+                                                            <p:commandButton styleClass="styleClass-commandButton-adicionarUsuariosPermitidos" alt="Adicionar em Permitidos" action="#{pgAcessos.adicionarUsuarioPermitido()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-arrowthick-1-n">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.usuarioSBInclusao}" value="#{usuario}" />
+                                                            </p:commandButton>
+                                                            <p:commandButton styleClass="styleClass-commandButton-adicionarUsuariosNegados" alt="Adicionar em Negados" action="#{pgAcessos.adicionarUsuarioNegado()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-arrowthick-1-s">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.usuarioSBInclusao}" value="#{usuario}" />
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+
+                                        <p:fieldset legend="Usuários Permitidos">
+                                            <h:form>
+                                                <p:column headerText="Usuários Permitidos">
+                                                    <ui:repeat var="usuario" value="#{pgAcessos.acessoSelecionado.usuariosPermitidos}"  >
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-usuariosPermitidos" value="#{usuario.nome}" />
+                                                            <p:commandButton styleClass="styleClass-commandButton-removerUsuariosPermitidos" alt="Remover" action="#{pgAcessos.removerUsuarioPermitido()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')} " icon="ui-icon-closethick">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.usuarioSBExclusao}" value="#{usuario}" />1
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+                                        <p:fieldset legend="Usuários Negados">
+                                            <h:form>
+                                                <p:column headerText="Usuários Negados">
+                                                    <ui:repeat var="usuario" value="#{pgAcessos.acessoSelecionado.usuariosNegados}">
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-usuariosNegados" value="#{usuario.nome}" />
+                                                            <p:commandButton styleClass="styleClass-commandButton-removerUsuariosNegados" alt="Remover" action="#{pgAcessos.removerUsuarioNegado()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-closethick">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.usuarioSBExclusao}" value="#{usuario}" />
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+
+                                    </p:panelGrid>
+                                    <br/>
+
+                                    <p:panelGrid id="id-panelGrid-areaGrupoUsuarios" columns="3">
+                                        <f:facet name="header">
+                                            <h:outputText value="PERMISSÕES POR GRUPOS: #{pgAcessos.acessoSelecionado}" />
+                                        </f:facet>
+
+                                        <p:fieldset legend="Liberar ou Negar Acessos">
+                                            <h:form>
+                                                <p:column headerText="Grupo de Usuários Disponíveis">
+                                                    <ui:repeat var="grupoUsuarios" value="#{pgAcessos.acessoSelecionado.gruposDisponiveis}">
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-grupoUsuariosDisponiveis" value="#{grupoUsuarios.nome}" />
+                                                            <p:commandButton styleClass="styleClass-commandButton-adicionarGrupoUsuariosPermitidos" alt="Adicionar em Permitidos" action="#{pgAcessos.adicionarGrupoPermitido()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-arrowthick-1-n">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.grupoUsuarioSBInclusao}" value="#{grupoUsuarios}" />
+                                                            </p:commandButton>
+                                                            <p:commandButton styleClass="styleClass-commandButton-adicionarGrupoUsuariosNegados" alt="Adicionar em Negados" action="#{pgAcessos.adicionarGrupoNegado()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-arrowthick-1-s">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.grupoUsuarioSBInclusao}" value="#{grupoUsuarios}" />
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+
+                                        <p:fieldset legend="Grupo de Usuários Permitidos">
+                                            <h:form>
+                                                <p:column headerText="Grupo de Usuários Permitidos">
+                                                    <ui:repeat var="grupoUsuarios" value="#{pgAcessos.acessoSelecionado.gruposPermitidos}">
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-grupoUsuariosPermitidos" value="#{grupoUsuarios.nome}" />
+                                                            <p:commandButton styleClass="styleClass-commandButton-removerGrupoUsuariosPermitidos" alt="Remover" action="#{pgAcessos.removerGrupoPermitido()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')} " icon="ui-icon-closethick">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.grupoUsuarioSBExclusao}" value="#{grupoUsuarios}" />
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+                                        <p:fieldset legend="Grupo de Usuários Negados">
+                                            <h:form>
+                                                <p:column headerText="Grupo de Usuários Negados">
+                                                    <ui:repeat var="grupoUsuarios" value="#{pgAcessos.acessoSelecionado.gruposNegados}">
+                                                        <p:row>
+                                                            <h:outputText styleClass="styleClass-outputText-grupoUsuariosNegados" value="#{grupoUsuarios.nome}"/>
+                                                            <p:commandButton styleClass="styleClass-commandButton-removerGrupoUsuariosNegados" alt="Remover" action="#{pgAcessos.removerGrupoNegado()}" update="#{pgUtil.makeCaminhoCompletoID('id-panelGroup-acessos')}" icon="ui-icon-closethick">
+                                                                <f:setPropertyActionListener target="#{pgAcessos.grupoUsuarioSBExclusao}" value="#{grupoUsuarios}" />
+                                                            </p:commandButton>
+                                                        </p:row>
+                                                        <br />
+                                                    </ui:repeat>
+                                                </p:column>
+                                            </h:form>
+                                        </p:fieldset>
+
+                                    </p:panelGrid>
+
+                                </p:panelGrid>
+                                <h:form>
+                                    <p:commandButton id="id-commandButton-salvarAlteracoes" value="SALVAR ALTERAÇÕES" actionListener="#{pgAcessos.salvarAlteracoes()}" action="#{controleDeSessaoWeb.recarregarPermissoes()}"  />
+                                </h:form>
+                            </h:panelGroup>
+
+                        </p:tab>
+                        <p:tab title="Acesso A paginas">
+                            <h:form>
+                                <h1>
+                                    <h:outputText value="#{pgAcessos.crudPaginasAcesso.registro.nomePagina}" />
+                                </h1>
+                                <SBComp:CRUDNavegador crud="#{pgAcessos.crudPaginasAcesso}" metodoMudaRegistro="#{pgAcessos.mudaRegistroPaginas()}" />
+                                <SBComp:seletorItens pickList="#{pgAcessos.pickListUsuarioPagina}" NomeItensSelecionados="Usuarios Permitidos" NomeOrigemItens="Usuários Disponiveis" />
+
+                                <SBComp:seletorItens pickList="#{pgAcessos.pickListGrupoUsuarioPagina}" NomeItensSelecionados="Grupos Permitidos" NomeOrigemItens="Grupos Disponíveis" />
+
+                            </h:form>
+
+
+
+
+                        </p:tab>
+                    </p:tabView>
+
+                </p:tab>
+
+            </p:tabView>
+
+            <br /><br /><br />
+
+        </ui:define>
+    </ui:composition>
+</html>

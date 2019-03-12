@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.super_bits</groupId>
+    <artifactId>sbProjectClient</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+    <repositories>
+
+
+        <repository>
+            <id>org.tmatesoft.svnkit</id>
+            <url>http://maven.tmatesoft.com/content/repositories/releases/</url>
+        </repository>
+
+    </repositories>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.super_bits.desenvolvimento</groupId>
+            <artifactId>SBProjetosModel</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>org.tmatesoft.svnkit</groupId>
+            <artifactId>svnkit</artifactId>
+            <version>1.8.12</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
+        </dependency>
+
+
+
+    </dependencies>
+
+    <!-- One-Jar is in the googlecode repository -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+    <build>
+
+
+
+
+
+
+
+        <plugins>
+
+
+
+
+
+            <plugin>
+                <!--groupId>org.dstovall</groupId--> <!-- not available on the central -->
+                <groupId>com.jolira</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>com.super_bits.sbprojectclient.SBProjectClient</mainClass>
+                            <attachToBuild>true</attachToBuild>
+                            <!-- https://code.google.com/p/onejar-maven-plugin/issues/detail?id=8 -->
+                            <!--classifier>onejar</classifier-->
+                            <filename>projetoCliente</filename>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+
+
+
+
+        </plugins>
+    </build>
+
+
+</project>

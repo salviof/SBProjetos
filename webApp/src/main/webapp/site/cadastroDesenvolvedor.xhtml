@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+
+
+
+      xmlns:SBComp="http://java.sun.com/jsf/composite/SBComp"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <ui:composition template="/resources/SBComp/template/modeloGeral.xhtml">
+
+        <ui:define name="head"  >
+
+        </ui:define>
+
+        <ui:define name="divConteudo">
+            <h:form  >
+                <SBComp:seletorItem TIPO_VIEW_COMBO="true" registro="#{pgCadastroDesenvolvedor.desenvolvedorSelecionado}" lista="#{pgCadastroDesenvolvedor.desenvolvedores}" atualizaFormOnChange="true" />
+
+
+            </h:form>
+        </ui:define>
+
+
+
+    </ui:composition>
+
+
+
+
+
+
+
+</html>

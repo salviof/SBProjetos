@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:SBLogin="http://xmlns.jcp.org/jsf/composite/SBComp/login"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="ocultarFormulario" type="java.lang.Boolean" default="true"/>
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation >
+
+        <h:form id="infoLoginSB">
+
+
+            <h:panelGrid columns="1" >
+                <p:outputLabel value= "Olá! #{sessaoAtualSBWP.usuario},"/>
+                <!-- logar -->
+                <c:if test="#{!paginaAtual.sessao.identificado}" >
+
+                    <c:if test="#{cc.attrs.ocultarFormulario}">
+
+                        <p:commandButton id="botao-logar" value="Identifique-se" type="button" styleClass="botao-login"/>
+
+
+                        <p:overlayPanel id="imagePane2" for="botao-logar" widgetVar="janelaLogin" hideEffect="fade" dismissable="true" showCloseIcon="true">
+                            <SBLogin:formLogin/>
+                        </p:overlayPanel>
+
+                    </c:if>
+
+
+                    <c:if test="#{!cc.attrs.ocultarFormulario}">
+
+                        <SBLogin:formLogin recarregarConteudo="true"/>
+                    </c:if>
+                </c:if>
+                <!-- logado -->
+                <c:if test="#{paginaAtual.sessao.identificado}" >
+
+                    <p:commandButton id="botao-logado" icon="ui-icon-gear" iconPos="" value="Sair \ alterar perfil" type="button" onclick="PF('janelaLogout').show();"  />
+                    <p:overlayPanel id="imagePanel" for="botao-logado" hideEffect="fade" dismissable="true" showCloseIcon="true" >
+                        <!--
+                                               <p class="menu-logado"> Alterar Senha </p>
+                                               <p class="menu-logado"> Alterar Cadastro</p>
+                                               <p class="menu-logado"> Vincular Rede Social </p>
+                        -->
+                        <p:commandLink actionListener="#{paginaAtual.controleDeSessao.efetuarLogOut()}" update="@form" oncomplete="javascript:location.reload();">
+                            <p class="menu-logado">  Sair </p> </p:commandLink>
+                    </p:overlayPanel>
+
+                </c:if>
+
+            </h:panelGrid>
+
+        </h:form>
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

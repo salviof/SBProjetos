@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+
+      xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+
+    <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
+
+        <ui:define name="head"  >
+
+        </ui:define>
+
+        <ui:define name="divConteudo">
+
+            sfasfsdfasdasd adasdasd
+            <h:form >
+
+                <p:commandButton value="teste"  actionListener="#{pgAdmin.testeErro()}" />
+            </h:form>
+
+
+            <h:form >
+                <p:outputLabel value="#{pgAcessosssss.teste}"/>
+                <p:commandButton value="testess"  update="@form" />
+            </h:form>
+
+            <h:form >
+                <p:commandButton value="tesete" actionListener="#{testeErros.naoImplementado()}" />
+            </h:form>
+
+            <h:form  id="clientesEProjetos"> 
+                Selecione o cliente: 
+                <SBComp:seletorItem lista="#{pgAdmin.clientes}" registro="#{pgAdmin.clienteSelecionado}"  TIPO_VIEW_COMBO="true" atualizaFormOnChange="true"/>
+
+                <SBComp:seletorItem lista="#{pgAdmin.clienteSelecionado.projetos}" registro="#{pgAdmin.projetoSelecionado}" TIPO_VIEW_COMBO="true" />
+
+
+                <p:commandButton update="@form" value="UpdateForm" />
+
+
+
+
+            </h:form>    
+
+
+            <p:panel header="Cadastrar novo Cliente" >
+                <h:form >
+                    <p:commandButton actionListener="#{pgAdmin.criarNovoCliente}" value="Novo" update="@form" />
+                    nome do cliente: <p:inputText value="#{pgAdmin.novoCliente.nome}" />
+
+                    <p:commandButton value="Salvar" actionListener="#{pgAdmin.salvarNovoCliente()}" update="@form,:clientesEProjetos" onsuccess="#{pgUtil.atualizaTelaPorID('clientesEProjetos')}" />
+                </h:form>
+            </p:panel>
+
+            <p:panel header="Cadastrar novo Projeto" >
+                <h:form >
+                    <p:commandButton actionListener="#{pgAdmin.criarNovoProjeto()}" value="Novo" update="@form" />
+                    nome do projeto: <p:inputText value="#{pgAdmin.novoProjeto.nomeProjeto}" />
+                    Descricao: <p:inputText value="#{pgAdmin.novoProjeto.descricao}" />
+                    Diretório da aplicação: <p:inputText value="#{pgAdmin.novoProjeto.pastaDoProjeto}" />
+                    <p:commandButton value="Salvar" actionListener="#{pgAdmin.salvarNovoProjeto()}" update="@form" />
+                </h:form>
+            </p:panel>
+            <p:panel header="Cadastro de usuário" >
+                <h:form> 
+                    Nome: <p:inputText value="#{pgAdmin.novoDesenvolvedor.nome}" />
+                    Email:<p:inputText value="#{pgAdmin.novoDesenvolvedor.email}" />
+                    Usuário SVN:<p:inputText value="#{pgAdmin.novoDesenvolvedor.usuarioSVN}" />
+                    Senha:<p:inputText value="#{pgAdmin.novoDesenvolvedor.senha}" />
+                    <p:commandButton actionListener="#{pgAdmin.salvarNovoDesenvolvedor()}" />
+                </h:form>
+
+            </p:panel>
+
+
+            <p:panel header="Adcionar Desenvolvedor ao projeto" >
+                <h:form> 
+                    <SBComp:seletorItem TIPO_VIEW_COMBO="true" lista="#{pgAdmin.todosDesenvolvedores}" registro="#{pgAdmin.desenvolvedorSelecionado}" />
+                    Horas Semanais<p:spinner value="#{pgAdmin.horasSemanais}" />
+                    <p:commandButton actionListener="#{pgAdmin.adcionarDesenvolvedorAoProjeto}" update="@form" />
+                </h:form>
+
+            </p:panel>
+
+            <p:panel header="add job" >
+                <h:form> 
+                    <SBComp:seletorItem TIPO_VIEW_COMBO="true" lista="#{pgAdmin.todosDesenvolvedores}" registro="#{pgAdmin.desenvolvedorSelecionado}" atualizaFormOnChange="true" />
+                    <SBComp:seletorItem lista="#{pgAdmin.clienteSelecionado.projetos}" registro="#{pgAdmin.projetoSelecionado}" atualizaFormOnChange="true" TIPO_VIEW_COMBO="true" />
+                    <SBComp:seletorItem lista="#{pgAdmin.projetoSelecionado.requisitos}" registro="#{pgAdmin.requisitoSelecionado}" TIPO_VIEW_COMBO="true" />
+
+                    <p:calendar id="datetime1" value="#{pgAdmin.dataHorainicioTrabalho}" pattern="dd/MM/yyyy HH:mm:ss" />
+                    <p:calendar id="datetime2" value="#{pgAdmin.dataHoraFimTrabalho}" pattern="dd/MM/yyyy HH:mm:ss" />
+                    <p:commandButton actionListener="#{pgAdmin.novoJob()}" />
+                </h:form>
+
+            </p:panel>
+
+
+            <p:panel >
+                <h:form> 
+                    <p:commandButton value="Novo" actionListener="#{pgAdmin.criarNovoProjeto()}" update="@form" /> 
+                    <p:calendar value="#{pgAdmin.novoPreRequisito.dataSolicitacao}" mode="inline" />
+                    <p:calendar value="#{pgAdmin.novoPreRequisito.dataLimite}" mode="inline" locale="pt" />
+                    <p:inputText value="#{pgAdmin.novoPreRequisito.nomePreRequisito}" />
+                    <p:inputText value="#{pgAdmin.novoPreRequisito.justificativa}" />
+
+                    <p:commandButton value="Salvar novo Requisito" actionListener="#{pgAdmin.salvarPrerequisito()}" update="@form" />
+                </h:form>
+
+            </p:panel>
+
+        </ui:define>
+
+
+
+    </ui:composition>
+
+
+
+
+
+
+
+</html>

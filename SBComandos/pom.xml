@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>br.org.coletivoJava</groupId>
+    <artifactId>SBComandos</artifactId>
+    <name>SBComandos</name>
+    <version>0.9</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+
+
+    <dependencies>
+
+
+        <dependency>
+            <groupId>com.super_bits.desenvolvimento.sbprojetos</groupId>
+            <artifactId>model_regras</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+
+
+
+
+            <!-- Includes the runtime dependencies -->
+            <plugin>
+                <groupId>com.jolira</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>org.coletivoJava.SBProjetoSBStarterFacil</mainClass>
+                            <onejarVersion>0.97</onejarVersion>
+                            <attachToBuild>true</attachToBuild>
+
+
+                            <binlibs>
+                                <fileSet>
+                                    <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/SBProjetos/model_regras/src/main/resources/scripts/</directory>
+                                    <includes>
+                                        <include>*</include>
+                                    </includes>
+                                </fileSet>
+                                <fileSet>
+                                    <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/utilitarios/SBShell/shellCommands/src/main/resources/scripts/</directory>
+                                    <includes>
+                                        <include>*</include>
+                                    </includes>
+                                </fileSet>
+
+                            </binlibs>
+
+
+                        </configuration>
+
+
+
+
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+
+
+        </plugins>
+
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+
+            </resource>
+            <resource>
+                <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/SBProjetos/model_regras/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+
+            <resource>
+                <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/utilitarios/SBShell/shellCommands/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <!-- One-Jar is in the googlecode repository -->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>onejar-maven-plugin.googlecode.com</id>
+            <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+
+
+</project>

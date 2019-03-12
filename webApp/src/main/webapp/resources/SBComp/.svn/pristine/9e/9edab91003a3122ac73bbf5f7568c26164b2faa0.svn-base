@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://java.sun.com/jsf/composite"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"        
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+
+      >
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="dados" />       
+    </cc:interface>
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+
+        <h:form>
+
+
+            <p:panelGrid  style="border: none; " columns="#{cc.attrs.dados.quantidadeSubFiltro}"  >	       
+                <c:forEach  items="#{cc.attrs.dados.filtros}" var="filtro" begin="0">  
+                    filtro
+                </c:forEach>
+            </p:panelGrid>
+
+
+
+
+
+        </h:form>
+
+    </cc:implementation>
+</html>
+
+
+
+
+
+
+
+
+
+

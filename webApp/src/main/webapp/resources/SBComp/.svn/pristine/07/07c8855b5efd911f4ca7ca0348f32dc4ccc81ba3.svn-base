@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"  
+      xmlns:sbc="http://java.sun.com/jsf/composite/SBComp"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+
+
+
+
+
+
+    <ui:composition template="/resources/SBComp/template/basico/modeloGeral.xhtml">
+
+        <ui:define name="head"  >
+            <!--Aqui entra os stylesSheats e output scripts especificos da pagina 
+            o login pai foi removido para dentro do modelo geral, já que ele sempre vai ser chamado
+            -->
+
+        </ui:define>
+
+        <ui:define name="divConteudo">
+
+            <!--
+               Conteúdo da Pagina     
+            -->
+
+        </ui:define>
+
+    </ui:composition>
+
+
+
+
+
+
+</html>
+
+
+
+
+
+
+
+
+
+

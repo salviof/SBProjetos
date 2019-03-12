@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:head>
+        <title>NOVO REQUISITO</title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+
+
+    <p:growl id="mensagemUsuario" autoUpdate="true"/>
+    <h:form id="FormCadastroRequisito" >
+        projeto: #{frmNovoRequisito.projeto.nomeProjeto}
+
+        <p:panelGrid columns="2" >
+
+            <p:outputLabel value="Nome do Requisito"/>   
+            <p:inputText id="nomeRequisito" value="#{frmNovoRequisito.nomeNovoRequisito}" required="true" >
+                <f:validateLength minimum="3"/>
+            </p:inputText>
+
+            <p:panel  header="descricao" >
+                <p:editor id="descrição"  value="#{frmNovoRequisito.descricao}" width="350" height="230" required="true" >
+                    <f:validateLength minimum="10"/>
+
+                </p:editor>
+
+            </p:panel>
+            <p:panel header="Motivação" >
+                <p:editor id="Motivação" value="#{frmNovoRequisito.motivacao}" width="350" height="230" required="true" />
+            </p:panel>
+        </p:panelGrid>
+
+        <p:commandButton  value="#{frmNovoRequisito.textoAcao}"  style="height: 40px; width: 100%;" actionListener="#{frmNovoRequisito.executarAcao()}"  >
+
+
+
+
+
+        </p:commandButton>
+    </h:form >
+
+    <h:form >
+
+        <p:commandButton  value="Sair"  style="height: 40px; width: 100%;" actionListener="#{frmNovoRequisito.fecharESair()}"  />
+    </h:form>
+
+</html>

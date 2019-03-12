@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sbc="http://java.sun.com/jsf/composite/SBComp">
+<h:head>
+	
+</h:head>
+<h:body>
+
+	<br />
+
+
+	<h:form>
+
+<p:panel header="nome Resumido">
+#{infoErroCritic.tituloErro}
+		</p:panel>
+
+		
+<p:panel  header="Nome Sql Info">
+#{infoErroCritic.qinfo.NQ}
+</p:panel>
+<p:panel header="SQL Gerado" >
+#{infoErroCritic.qinfo.sql}
+</p:panel>
+<p:panel header="Parametros Criados" >
+#{infoErroCritic.qinfo.quantidadeParametros}
+#{infoErroCritic.qinfo.parametros}
+</p:panel>
+<p:panel header="Parametros aplicados" >
+#{infoErroCritic.qinfo.parametros}
+</p:panel>
+<p:panel header="Erro Encontrado " >
+#{infoErroCritic.mensagemErro}
+</p:panel>
+
+<p:panel header="PrintStack:" >
+#{infoErroCritic.printStack}
+</p:panel>
+
+
+
+	</h:form>
+
+</h:body>
+</html>

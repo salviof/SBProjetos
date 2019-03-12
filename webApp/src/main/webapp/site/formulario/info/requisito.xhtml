@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+    <h:head>
+        <title>DETALHES DO REQUISITO ->#{frmInfoRequisito.requisito.nome} </title>
+        <style type="text/css">
+            .ui-widget {
+                font-size: 90%;
+            }
+        </style>
+    </h:head>
+
+    <p:growl id="mensagemUsuario" autoUpdate="true"/>
+    <p:tabView activeIndex="0" >
+        <p:tab title="Detalhes do Projeto" >
+            <p:panelGrid columns="2" >
+
+
+                <p:panel  header="Descrição" style="height: 250px; width: 370px;" >
+
+                    <h:outputText value="#{frmInfoRequisito.requisito.descricao}"  escape="false"  />
+                </p:panel>
+
+                <p:panel header="Motivação" style="height: 250px; width: 370px;" >
+                    <h:outputText value="#{frmInfoRequisito.requisito.motivacao}" escape="false" />
+                </p:panel>
+
+
+            </p:panelGrid>
+        </p:tab>
+        <p:tab title="Editar">
+            <h:form >
+                <p:panelGrid columns="2" >
+
+                    <p:panel  header="Descrição" style="height: 250px; width: 370px;" >
+                        <p:editor value="#{frmInfoRequisito.requisito.descricao}" />
+                    </p:panel>
+
+                    <p:panel header="Motivação" style="height: 250px; width: 370px;" >
+                        <p:editor value="#{frmInfoRequisito.requisito.motivacao}" />
+                    </p:panel>
+
+
+                </p:panelGrid>
+                <p:commandButton actionListener="#{frmInfoRequisito.salvarAlteracoes()}" update="@form" value="Salvar" />
+            </h:form>
+        </p:tab> 
+
+
+    </p:tabView> 
+
+    <h:form >
+
+        <p:commandButton  value="Sair"  style="height: 40px; width: 100%;" actionListener="#{frmNovoRequisito.fecharESair()}"  />
+    </h:form>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:SBLogin="http://xmlns.jcp.org/jsf/composite/SBComp/login"
+    xmlns:SBComp="http://xmlns.jcp.org/jsf/composite/SBComp">
+    <f:view contentType="text/html; charset=UTF-8" encoding="UTF-8" >
+        <h:head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title> #{paginaAtual.infoPagina.titulo} </title>
+
+            <h:outputStylesheet name="SBComp/template/basico/css/login-pai.css" />
+            <h:outputStylesheet name="css/layout.css" />
+            <h:outputScript library="SBComp/js" name="traducaoDatasPrime.js"  />
+
+            <ui:insert name="head" />
+            <!-- CODIGO TRADUTOR DO CALENDÁRIO PRIMEFACES -->
+            <!-- FIM DO CODIGO TRADUTOR DO CALENDÁRIO PRIMEFACES -->
+        </h:head>
+
+        <h:body>
+            <!-- CODIGO PARA EXIBIR O LOAD -->
+            <p:ajaxStatus style="display: block; margin-bottom: 2em; height: 24px;">
+                <f:facet name="default">
+                    <!-- QUANDO NÃO ESTIVER CARREGANDO NADA MOSTRA ISSO-->
+                </f:facet>
+
+                <f:facet name="start">
+                    <!-- QUANDO ESTIVER CARREGANDO EXIBE ISTO -->
+                    <div >
+                        <p:graphicImage  name="SBComp/img/SBloading1.gif" />
+                    </div>
+                </f:facet>
+
+                <f:facet name="complete">
+
+                </f:facet>
+            </p:ajaxStatus>
+            <!-- FIM DO LOAD -->
+
+            <!-- CAPTURADOR DE MENSGENS DE USUÁRIO -->
+            <p:growl  id="mensagemUsuario" />
+
+
+
+            <!-- ATUALMENTE O TOPO ESTÁ DIVIDDO EM 2 COLUNAS UMA PARA LOGIN OUTRA PARA O CABEÇALHO EM SI,
+            MINHA SUGESTÃO É QUE O LOGIN FIQUE EM UMA DIV FLUTUANTE E QUANDO FOR FAZER O TOPO BASTAR TER A CONSCIENCIA QUE AQUELA AREA SERÁ SOBRESCRITA PELA DIV FLUTUANTE
+            O CABEÇALHO POR PADRÃO SE ENCONTRA EM /SITE/ToPO.XHTML
+            -->
+            <div id="divTopo">
+
+                <ui:insert name="divTop">
+                    <ui:include src="/site/topo.xhtml" />
+                </ui:insert>
+                <h:panelGroup style=" position:absolute;
+                              top:60px;
+                              right:50px;" >
+                    <SBLogin:infoLogin />
+                </h:panelGroup>
+
+            </div>
+
+
+
+
+            <!-- por enquanto o conteúdo é apenas uma div
+            mais tarde quando escolhermos um sistema de responsive designer vai ser por aqui
+            que quantas colunas tem  será definido
+
+            Esse sistema não vai impedir que telas que mudam muito especificamente de acordo com
+            a resolução funcione, a logica da mudança virá no xhtml do conteúdo
+            -->
+            <h:panelGroup id="conteudo">
+                <ui:insert name="divConteudo" />
+            </h:panelGroup>
+
+            <div id="divRodape">
+                <ui:insert name="divBooton">
+                    <ui:include src="/site/rodape.xhtml" />
+                </ui:insert>
+            </div>
+
+            <ui:debug hotkey="f"/>
+        </h:body>
+
+        <!-- iNFORMAÇÕES DA PAGINA, (APARECERÁ APENAS QUANDO ESTIVER NO MODO EM PRODUÇÃO
+        <SBComp:infoPagina />
+        -->
+
+        <!-- FIM DO CODIGO DE TRATAMENTO DE BEANS -->
+    </f:view>
+</html>

@@ -1,0 +1,90 @@
+
+
+/* loguin */
+#login-menu {
+    width: 250px;
+    background-color:  #{pgUtil.cores.corBackground};
+    position: relative;
+
+}
+#login-menu input{
+    width: 100%;
+    font-size: 1em;
+    padding: 3px;
+}
+#login-menu p {
+    line-height: 1.5;
+    padding: 5px 10px;
+    display: block;
+}
+#login-menu label{
+    font: 1.3em bold; 
+}
+.lembre-me {
+    padding: 5px 10px;
+}
+
+input[type=text]{   
+    background: #efefef;
+    color: #555;
+}
+
+.usuario_login {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+/* LOGADO */
+.menu-logado {
+    font-size: 1.1em;
+    padding: 0.3em 0em;
+}
+.menu-logado:hover{
+    color: #6666ff;
+    background-color: #DFE4E6;
+    cursor:pointer;
+}
+/* TELA MSG URGENTE */
+
+.botao-primario{
+    background: #0074a2;
+    border-color:#1e8cbe ;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    color: #fff;
+    width: 100px;
+    height: 30px;
+
+
+}
+.botao-primario:hover {
+    background: #1e8cbe;
+    border-color: #0074a2;
+    -webkit-box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    box-shadow: inset 0 1px 0 rgba(120,200,230,.6);
+    color: #fff;
+}
+.autoWidthDialog  {
+    width: auto !important;
+}
+#msg-urgente  {
+    width: 80%;
+    text-align: center;
+    background-color: rgba (0,0,0,8);
+    justify-content: center !important;
+    display: flex;
+}
+.localizacao{
+    float:right;
+    margin: 5em 5em 0 0;
+    z-index: 1001;
+    position: absolute;
+    left: 1000px;
+}
+
+
+
+
+
