@@ -6,9 +6,11 @@
 package com.super_bits.sbProjetos.util;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDiretorios;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDiretorio;
+
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreShellBasico;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStrings;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+
 import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilSBCoreArquivoTexto;
 import com.super_bits.modulosSB.SBCore.modulos.Mensagens.FabMensagens;
 import com.super_bits.sbProjetos.Model.Cliente;
@@ -150,8 +152,8 @@ public class UtilSBProjetos {
 
         Map<String, String> mapaPalavras = new HashMap<>();
 
-        mapaPalavras.put("InomeProjetoI", UtilSBCoreStrings.makeStrUrlAmigavel(p.getNomeProjeto()));
-        mapaPalavras.put("InomeClienteI", UtilSBCoreStrings.makeStrUrlAmigavel(p.getCliente().getNome()));
+        mapaPalavras.put("InomeProjetoI", UtilSBCoreStringFiltros.gerarUrlAmigavel(p.getNomeProjeto()));
+        mapaPalavras.put("InomeClienteI", UtilSBCoreStringFiltros.gerarUrlAmigavel(p.getCliente().getNome()));
 
         for (String extencaoArquivos : extensoesEditaveis) {
 
@@ -166,7 +168,7 @@ public class UtilSBProjetos {
             }
         }
 
-        List<String> subpastaras = UtilSBCoreDiretorios.getDiretoriosRecursivoOrdemMaoirArvore(new File(p.getCaminhoPastaDoProjetoSourceLocal()));
+        List<String> subpastaras = UtilSBCoreDiretorio.getDiretoriosRecursivoOrdemMaoirArvore(new File(p.getCaminhoPastaDoProjetoSourceLocal()));
         for (String subpasta : subpastaras) {
             for (String nomeAntigo : mapaPalavras.keySet()) {
 

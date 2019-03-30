@@ -9,7 +9,7 @@ import com.super_bits.modulosSB.Persistencia.dao.ControllerAbstratoSBPersistenci
 import com.super_bits.modulosSB.Persistencia.dao.UtilSBPersistencia;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.modulos.Controller.Interfaces.ItfResposta;
-import com.super_bits.modulosSB.SBCore.modulos.TratamentoDeErros.FabErro;
+
 import com.super_bits.sbProjetos.Model.Cliente;
 import com.super_bits.sbProjetos.Model.Desenvolvedor;
 import com.super_bits.sbProjetos.Model.Projeto;
@@ -18,6 +18,7 @@ import com.super_bits.sbProjetos.Model.Requisito;
 import com.super_bits.sbProjetos.Model.StatusRequisito;
 import java.util.Date;
 import java.util.List;
+import org.coletivojava.fw.api.tratamentoErros.FabErro;
 
 /**
  *

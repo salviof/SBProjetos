@@ -6,7 +6,8 @@
 package com.super_bits.sbProjetos.Model;
 
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStrings;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabTipoAtributoObjeto;
@@ -124,7 +125,7 @@ public class Cliente extends EntidadeSimples implements Serializable {
 
     public String getNomePasta() {
 
-        nomePasta = UtilSBCoreStrings.makeStrUrlAmigavel(getNome());
+        nomePasta = UtilSBCoreStringFiltros.gerarUrlAmigavel(getNome());
 
         return nomePasta;
     }

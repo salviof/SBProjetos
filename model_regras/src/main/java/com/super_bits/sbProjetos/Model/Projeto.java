@@ -10,8 +10,12 @@ import com.super_bits.modulosSB.Persistencia.dao.UtilSBPersistencia;
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStrings;
-import com.super_bits.modulosSB.SBCore.modulos.TratamentoDeErros.FabErro;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringConversores;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringGerador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
+
+
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabTipoAtributoObjeto;
@@ -33,6 +37,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
+import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import org.hibernate.annotations.Where;
 
 /**
@@ -152,7 +157,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     }
 
     public String getNomeLikeUrlAmigavel() {
-        return UtilSBCoreStrings.makeStrUrlAmigavel(nomeProjeto);
+        return UtilSBCoreStringFiltros.gerarUrlAmigavel(nomeProjeto);
     }
 
     public String getCaminhoPastaDoProjetoSourceLocal() {
@@ -185,7 +190,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
     public String getNomePastaProjeto() {
 
-        nomePastaProjeto = UtilSBCoreStrings.makeStrUrlAmigavel(getNomeProjeto());
+        nomePastaProjeto = UtilSBCoreStringFiltros.gerarUrlAmigavel(getNomeProjeto());
 
         return nomePastaProjeto;
     }
@@ -423,7 +428,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
     public String getLinkSVNRelease() {
 
-        linkSVNRelease = VariaveisSBProject.diretorioSevidorSVNSource + "/" + UtilSBCoreStrings.makeStrUrlAmigavel(getNomeProjeto()) + "/trunk/";
+        linkSVNRelease = VariaveisSBProject.diretorioSevidorSVNSource + "/" + UtilSBCoreStringFiltros.gerarUrlAmigavel(getNomeProjeto()) + "/trunk/";
         return linkSVNRelease;
     }
 

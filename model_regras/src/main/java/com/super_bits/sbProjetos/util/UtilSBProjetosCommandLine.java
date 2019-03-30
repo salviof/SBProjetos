@@ -6,7 +6,8 @@
 package com.super_bits.sbProjetos.util;
 
 import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStrings;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringValidador;
+
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.TIPO_PRIMITIVO;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanSimples;
 import com.super_bits.sbProjetos.Model.Cliente;
@@ -150,7 +151,7 @@ public class UtilSBProjetosCommandLine {
             System.out.println("Digite o valor atualizado");
             String valorUsuario = getValorUsuario(pTipoDado);
 
-            if (UtilSBCoreStrings.isNuloOuEmbranco(valorUsuario)) {
+            if (UtilSBCoreStringValidador.isNuloOuEmbranco(valorUsuario)) {
 
                 System.out.println("Deseja usar um valor padrão? digite sim");
 
@@ -324,7 +325,7 @@ public class UtilSBProjetosCommandLine {
             boolean valorDefinido = false;
             while (!valorDefinido) {
                 String valor = getValorOperadorSet(pObjeto.getNome(), TIPO_PRIMITIVO.LETRAS);
-                if (UtilSBCoreStrings.isNAO_NuloNemBranco(valor)) {
+                if (UtilSBCoreStringValidador.isNAO_NuloNemBranco(valor)) {
                     try {
                         pObjeto.getCampoByNomeOuAnotacao(cmapo).setValor(valor);
                         valorDefinido = true;

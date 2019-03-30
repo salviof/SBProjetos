@@ -6,13 +6,16 @@
 package com.super_bits.sbProjetos.util;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStrings;
-import com.super_bits.modulosSB.SBCore.modulos.TratamentoDeErros.FabErro;
-import com.super_bits.modulosSB.SBCore.testesFW.TesteJunit;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringConversores;
+
+
+
 import com.super_bits.sbProjetos.ConfiguradorCoreSBProjetosModel;
 import java.io.File;
 import java.util.Map;
+import org.coletivojava.fw.api.tratamentoErros.FabErro;
 import org.junit.Test;
+import testesFW.TesteJunit;
 
 /**
  *
@@ -34,8 +37,8 @@ public class UtilSBProjetosTest extends TesteJunit {
 
             Process p = pb.start();
 
-            String respostaErro = (UtilSBCoreStrings.getStringByInputStream(p.getErrorStream()));
-            String respostaPadrao = (UtilSBCoreStrings.getStringByInputStream(p.getInputStream()));
+            String respostaErro = (UtilSBCoreStringConversores.getStringByInputStream(p.getErrorStream()));
+            String respostaPadrao = (UtilSBCoreStringConversores.getStringByInputStream(p.getInputStream()));
 
             System.out.println("A resposta Erro foi");
             System.out.println(respostaErro);
@@ -44,7 +47,7 @@ public class UtilSBProjetosTest extends TesteJunit {
 
         } catch (Throwable e) {
 
-            FabErro.SOLICITAR_REPARO.paraDesenvolvedor("falha na execucao do comando", e);
+            SBCore.RelatarErro(FabErro.SOLICITAR_REPARO,"falha na execucao do comando", e);
 
         }
 
