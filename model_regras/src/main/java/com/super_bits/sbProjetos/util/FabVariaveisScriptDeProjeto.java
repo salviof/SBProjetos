@@ -17,5 +17,19 @@ public enum FabVariaveisScriptDeProjeto {
     public static String nomeArquivoCliente() {
         return "cliente.info";
     }
+    
+    public  String valorPadrao(){
+        switch (this){
+            case SERVIDOR_GIT_RELEASE:
+                return "https://github.com/salviof/";
+                
+            case SERVIDOR_GIT_SOURCE:
+                return "https://github.com/salviof/";
+                
+            default:
+                throw new AssertionError(this.name());
+            
+        }
+    }
 
 }

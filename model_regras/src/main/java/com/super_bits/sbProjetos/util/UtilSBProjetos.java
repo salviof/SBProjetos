@@ -37,7 +37,7 @@ import org.junit.Assert;
  */
 public class UtilSBProjetos {
 
-    public static final String NOME_PROJETO_BASE = "SuperBitsWPStarter";
+    public static final String NOME_PROJETO_BASE = "SBAplicacaoModelo";
     public static final String NOME_PASTA_TEMPORARIA = "projetoTemp";
     public static final String CAMINHO_PROJETO_BASE = "/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork";
     // Recebe parametros nome da pasta do cliente, e do projeto
@@ -106,7 +106,7 @@ public class UtilSBProjetos {
 
         String caminhoPastaSourceCliente = p.getCliente().getCaminhoPastaClinteSource();
         String caminhoPastaSourceProjeto = p.getCaminhoPastaDoProjetoSourceLocal();
-        String caminhoPastaModelo = CAMINHO_PROJETO_BASE + "/" + NOME_PROJETO_BASE + "/";
+        String caminhoPastaModelo = "/home/superBits/projetos/coletivoJava/source/SBAplicacaoModelo/";
         String caminhoPastaSourceTemporaria = p.getCliente().getCaminhoPastaClinteSource() + "/" + NOME_PASTA_TEMPORARIA;
 
         File pastaSourceTemporaria = new File(caminhoPastaSourceTemporaria);
