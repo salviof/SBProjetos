@@ -19,7 +19,7 @@
 
         <dependency>
             <groupId>com.super_bits.desenvolvimento.sbprojetos</groupId>
-            <artifactId>model_regras</artifactId>
+            <artifactId>modelRegras</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
 
@@ -56,13 +56,13 @@
 
                             <binlibs>
                                 <fileSet>
-                                    <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/SBProjetos/model_regras/src/main/resources/scripts/</directory>
+                                    <directory>/home/superBits/projetos/Super_Bits/source/SBProjetos/modelRegras/src/main/resources/scripts/</directory>
                                     <includes>
                                         <include>*</include>
                                     </includes>
                                 </fileSet>
                                 <fileSet>
-                                    <directory>/home/superBits/projetos/Super_Bits/source/SuperBits_FrameWork/utilitarios/SBShell/shellCommands/src/main/resources/scripts/</directory>
+                                    <directory>/home/superBits/projetos/coletivoJava/source/fw/util/SBShell/shellCommands/src/main/resources/scripts/</directory>
                                     <includes>
                                         <include>*</include>
                                     </includes>
