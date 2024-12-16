@@ -56,7 +56,7 @@
 
                             <binlibs>
                                 <fileSet>
-                                    <directory>/home/superBits/projetos/Super_Bits/source/SBProjetos/modelRegras/src/main/resources/scripts/</directory>
+                                    <directory>/home/superBits/projetos/coletivoJava/source/SBProjetos/modelRegras/src/main/resources/scripts/</directory>
                                     <includes>
                                         <include>*</include>
                                     </includes>
