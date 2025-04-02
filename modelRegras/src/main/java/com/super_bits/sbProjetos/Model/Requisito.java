@@ -32,7 +32,7 @@ public class Requisito extends EntidadeSimples implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @InfoCampo(tipo = FabTipoAtributoObjeto.AAA_NOME)
+    @InfoCampo(tipo = FabTipoAtributoObjeto.NOME)
     private String nome;
     private Double horasEstimadas;
     private Double horasTrabalhadas;

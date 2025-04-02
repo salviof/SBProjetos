@@ -27,7 +27,7 @@ public class Projeto_Desenvolvedor extends EntidadeSimples {
     @ManyToOne
     private Projeto projeto;
     @ManyToOne
-    @InfoCampo(tipo = FabTipoAtributoObjeto.AAA_NOME)
+    @InfoCampo(tipo = FabTipoAtributoObjeto.NOME)
     private Desenvolvedor desenvolvedor;
 
     private int horasDia;

@@ -58,7 +58,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataCriacao;
 
-    @InfoCampo(tipo = FabTipoAtributoObjeto.AAA_NOME)
+    @InfoCampo(tipo = FabTipoAtributoObjeto.NOME)
     private String nomeProjeto;
     private String nomeComercial;
     @Column(length = 1000)

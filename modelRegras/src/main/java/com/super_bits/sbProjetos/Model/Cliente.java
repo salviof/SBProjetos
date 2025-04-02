@@ -32,7 +32,7 @@ public class Cliente extends EntidadeSimples implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @InfoCampo(tipo = FabTipoAtributoObjeto.ID)
     private int id;
-    @InfoCampo(tipo = FabTipoAtributoObjeto.AAA_NOME)
+    @InfoCampo(tipo = FabTipoAtributoObjeto.NOME)
     private String nome;
     private String nomePasta;
     private String servidorGitCodigoFonte;
