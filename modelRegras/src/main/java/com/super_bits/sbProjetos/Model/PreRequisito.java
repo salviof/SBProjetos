@@ -26,7 +26,7 @@ public class PreRequisito extends EntidadeSimples {
     @Id
     @InfoCampo(tipo = FabTipoAtributoObjeto.ID)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @InfoCampo(tipo = FabTipoAtributoObjeto.NOME_COMPLETO)
     private String nomePreRequisito;
     private String justificativa;
@@ -79,11 +79,11 @@ public class PreRequisito extends EntidadeSimples {
     }
 
     @Override
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

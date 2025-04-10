@@ -31,7 +31,7 @@ public class Requisito extends EntidadeSimples implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @InfoCampo(tipo = FabTipoAtributoObjeto.NOME)
     private String nome;
     private Double horasEstimadas;
@@ -64,11 +64,11 @@ public class Requisito extends EntidadeSimples implements Serializable {
         horasTrabalhadas = Double.valueOf(0);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

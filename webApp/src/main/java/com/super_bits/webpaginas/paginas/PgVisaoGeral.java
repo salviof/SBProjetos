@@ -260,7 +260,7 @@ public class PgVisaoGeral extends MB_PaginaConversation implements Serializable 
     }
 
     @Override
-    public int getId() {
+    public Long getId() {
         return 0;
     }
 

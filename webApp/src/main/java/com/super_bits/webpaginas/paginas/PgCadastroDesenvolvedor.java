@@ -63,7 +63,7 @@ public class PgCadastroDesenvolvedor extends MB_PaginaConversation {
     }
 
     @Override
-    public int getId() {
+    public Long getId() {
         return 2;
     }
 

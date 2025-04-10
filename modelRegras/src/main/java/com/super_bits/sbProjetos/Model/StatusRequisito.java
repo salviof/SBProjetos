@@ -28,7 +28,7 @@ public class StatusRequisito extends EntidadeSimples implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String descricao;
 
     public StatusRequisito() {
@@ -40,11 +40,11 @@ public class StatusRequisito extends EntidadeSimples implements Serializable {
         descricao = pDescricao;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

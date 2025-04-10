@@ -23,7 +23,7 @@ public class Projeto_Desenvolvedor extends EntidadeSimples {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @ManyToOne
     private Projeto projeto;
     @ManyToOne

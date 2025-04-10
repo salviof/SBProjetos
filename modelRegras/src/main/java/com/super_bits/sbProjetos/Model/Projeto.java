@@ -52,7 +52,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @InfoCampo(tipo = FabTipoAtributoObjeto.ID)
-    private int id;
+    private Long id;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dataPrevista;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -240,11 +240,11 @@ public class Projeto extends EntidadeSimples implements Serializable {
         this.linkSVNSource = linkSVNSource;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
