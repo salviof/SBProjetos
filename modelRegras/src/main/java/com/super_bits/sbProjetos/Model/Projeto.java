@@ -15,7 +15,6 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringGerador;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
 
-
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabTipoAtributoObjeto;
@@ -103,7 +102,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     private String pastaGitRelease;
     private String pastaGitSource;
 
-    public Projeto(int id, Date dataPrevista, Date dataCriacao, String nomeProjeto, String descricao, String linkSVN, String pastaDoProjeto, Cliente cliente, List<Desenvolvedor> desenvolvedores, List<GerenteProjeto> gerentesDeProjetos, List<Requisito> requisitos, List<Requisito> requisitosProximaVersao) {
+    public Projeto(Long id, Date dataPrevista, Date dataCriacao, String nomeProjeto, String descricao, String linkSVN, String pastaDoProjeto, Cliente cliente, List<Desenvolvedor> desenvolvedores, List<GerenteProjeto> gerentesDeProjetos, List<Requisito> requisitos, List<Requisito> requisitosProximaVersao) {
         this();
 
         this.id = id;

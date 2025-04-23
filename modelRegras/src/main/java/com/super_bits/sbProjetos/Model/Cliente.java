@@ -47,7 +47,7 @@ public class Cliente extends EntidadeSimples implements Serializable {
         projetos = new ArrayList<>();
     }
 
-    public Cliente(int id, String nome, List<Projeto> projetos) {
+    public Cliente(Long id, String nome, List<Projeto> projetos) {
         this();
         this.id = id;
         this.nome = nome;

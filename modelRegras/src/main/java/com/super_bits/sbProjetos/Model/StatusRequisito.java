@@ -20,11 +20,10 @@ import javax.persistence.Id;
 @Entity
 public class StatusRequisito extends EntidadeSimples implements Serializable {
 
-    public static StatusRequisito sujestao = new StatusRequisito(1,"Sujestão de requisito");
-    public static StatusRequisito futuro = new StatusRequisito(2,"Implementação futura");
-    public static StatusRequisito proximaVersao = new StatusRequisito(3,"Proxima Versão");
-    public static StatusRequisito finalizado = new StatusRequisito(4,"Finalizado");
-    
+    public static StatusRequisito sujestao = new StatusRequisito(1l, "Sujestão de requisito");
+    public static StatusRequisito futuro = new StatusRequisito(2l, "Implementação futura");
+    public static StatusRequisito proximaVersao = new StatusRequisito(3l, "Proxima Versão");
+    public static StatusRequisito finalizado = new StatusRequisito(4l, "Finalizado");
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +31,10 @@ public class StatusRequisito extends EntidadeSimples implements Serializable {
     private String descricao;
 
     public StatusRequisito() {
-        
+
     }
 
-    public StatusRequisito(int pId, String pDescricao) {
+    public StatusRequisito(Long pId, String pDescricao) {
         id = pId;
         descricao = pDescricao;
     }

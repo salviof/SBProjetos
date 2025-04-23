@@ -49,18 +49,18 @@ public class ConfigAcessos extends ConfigPermissoesAcessoModelAbstrato {
 
             Cliente superBits = new Cliente();
             superBits.setNome("Super Bits");
-            superBits.setId(1);
+            superBits.setId(1l);
 
             Cliente sphera = new Cliente();
 
             sphera.setNome("Sphera Security");
-            sphera.setId(2);
+            sphera.setId(2l);
             System.out.println("CLIENTE CADASTRADO");
             UtilSBPersistencia.mergeRegistro(superBits);
             UtilSBPersistencia.mergeRegistro(sphera);
 
             Cliente teste = new Cliente();
-            teste.loadByID(2);
+            teste.loadByID(2l);
 
             GerenteProjeto sergioOku = new GerenteProjeto();
 
@@ -72,7 +72,7 @@ public class ConfigAcessos extends ConfigPermissoesAcessoModelAbstrato {
             Desenvolvedor salvio = new Desenvolvedor();
 
             GrupoUsuarioSB gerenteDeProjeto = new GrupoUsuarioSB();
-            gerenteDeProjeto.setId(1);
+            gerenteDeProjeto.setId(1l);
             gerenteDeProjeto.setNome("Gerente de Pronjeto");
             gerenteDeProjeto.setDescricao("Usuarios com função de gerenciar projeto");
             gerenteDeProjeto.adcionaUsuario(sergioOku);
@@ -86,39 +86,39 @@ public class ConfigAcessos extends ConfigPermissoesAcessoModelAbstrato {
 
             sergioOku.setNome("Sergio Oku");
             sergioOku.setEmail("sergio.oku@spherasecurity.com");
-            sergioOku.setId(1);
+            sergioOku.setId(1l);
             UtilSBPersistencia.mergeRegistro(sergioOku);
 
             julio.setNome("José Júlio");
             julio.setEmail("julio@spherasecurity.com");
-            julio.setId(2);
+            julio.setId(2l);
             UtilSBPersistencia.mergeRegistro(julio);
 
             joaquim.setNome("Joaquim Marques");
             joaquim.setEmail("jmarques@spherasecurity.com");
-            joaquim.setId(3);
+            joaquim.setId(3l);
             UtilSBPersistencia.mergeRegistro(joaquim);
 
             alline.setNome("Alline Basile");
             alline.setEmail("alline@spherasecurity.com");
-            alline.setId(4);
+            alline.setId(4l);
             UtilSBPersistencia.mergeRegistro(alline);
 
             marcos.setNome("Marcos Vinicius");
             marcos.setEmail("mvrcorreia@outlook.com");
-            marcos.setId(5);
+            marcos.setId(5l);
             UtilSBPersistencia.mergeRegistro(marcos);
 
             eduardo.setNome("Eduardo Lima");
             eduardo.setEmail("eduarddollima@yahoo.com.br");
-            eduardo.setId(6);
+            eduardo.setId(6l);
             UtilSBPersistencia.mergeRegistro(eduardo);
 
             salvio.setNome("Salvio Furbino");
             salvio.setEmail("salviof@gmail.com");
-            salvio.setId(7);
+            salvio.setId(7l);
             Projeto proj = new Projeto();
-            proj.loadByID(1);
+            proj.loadByID(1l);
 
             salvio.getProjetos().add(proj);
             UtilSBPersistencia.mergeRegistro(salvio);

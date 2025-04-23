@@ -59,7 +59,7 @@ public class ModuloGestaoProjeto extends ControllerAbstratoSBPersistencia {
             StatusRequisito novoStatus = new StatusRequisito();
             System.out.println("Setando novo status" + novoStatus.getDescricao());
             novoStatus.loadByID(req.getStatusRequisito().getId() + 1);
-            if (novoStatus.getId() !=null .getId() > 0.getId() > 0  .getId() > 0) {
+            if (novoStatus.getId() != null && novoStatus.getId() > 0) {
                 req.setStatusRequisito(novoStatus);
                 UtilSBPersistencia.mergeRegistro(req);
                 System.out.println("promovido");
@@ -104,7 +104,8 @@ public class ModuloGestaoProjeto extends ControllerAbstratoSBPersistencia {
 
         novoStatus.loadByID(req.getStatusRequisito().getId() - 1);
         System.out.println("Setando novo status" + novoStatus.getDescricao());
-        if (novoStatus.getId() !=null .getId() > 0.getId() > 0  .getId() > 0) {
+        if (novoStatus.getId() != null && novoStatus.getId() > 0) {
+
             req.setStatusRequisito(novoStatus);
             UtilSBPersistencia.mergeRegistro(req);
             System.out.println("Rebaixado");
