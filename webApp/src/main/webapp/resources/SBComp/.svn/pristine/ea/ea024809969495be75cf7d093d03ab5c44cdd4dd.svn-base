@@ -14,7 +14,7 @@
 
     <!-- INTERFACE -->
     <cc:interface>
-        <cc:attribute name="registro" type="com.super_bits.modulosSB.SBCore.BeansInterface.basico.ItfBeanSimples" />
+        <cc:attribute name="registro" type="com.super_bits.modulosSB.SBCore.BeansInterface.basico.ComoEntidadeSimples" />
         <cc:attribute name="lista" type="java.util.List" />
         <cc:attribute name="statusAjax" type="java.lang.Boolean" default="false" />
         <cc:attribute name="atualizaFormOnChange" type="java.lang.Boolean" default="false" />

@@ -12,7 +12,7 @@ import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.interfaces.ItfCen
 import com.super_bits.modulosSB.SBCore.modulos.Mensagens.ItfCentralMensagens;
 import com.super_bits.modulosSB.SBCore.modulos.TratamentoDeErros.ErroSBCoreFW;
 import com.super_bits.modulosSB.SBCore.modulos.comunicacao.ItfCentralComunicacao;
-import com.super_bits.modulosSB.SBCore.modulos.fabrica.ItfFabricaAcoes;
+import com.super_bits.modulosSB.SBCore.modulos.fabrica.ComoFabricaAcoes;
 import com.super_bits.modulosSB.SBCore.modulos.fonteDados.ItfCentralAtributosDeObjetos;
 import com.super_bits.modulosSB.SBCore.modulos.localizacao.ItfCentralLocalizacao;
 import com.super_bits.modulosSB.SBCore.modulos.logeventos.CentralLogEventosArqTextoGenerica;
@@ -84,7 +84,7 @@ public class ConfigCoreDemoWP implements ItfConfiguracaoCoreSomenteLeitura {
     }
 
     @Override
-    public Class<? extends ItfFabricaAcoes>[] getFabricaDeAcoes() {
+    public Class<? extends ComoFabricaAcoes>[] getFabricaDeAcoes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

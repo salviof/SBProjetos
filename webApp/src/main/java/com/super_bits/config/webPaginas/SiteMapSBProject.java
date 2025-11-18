@@ -4,7 +4,7 @@
  */
 package com.super_bits.config.webPaginas;
 
-import com.super_bits.modulosSB.SBCore.modulos.view.menu.ItfFabricaMenu;
+import com.super_bits.modulosSB.SBCore.modulos.view.menu.ComoFabricaMenu;
 import com.super_bits.modulosSB.webPaginas.JSFManagedBeans.siteMap.MB_SiteMapa;
 import com.super_bits.webpaginas.paginas.PgAdmin;
 import com.super_bits.webpaginas.paginas.PgCadastroDesenvolvedor;
@@ -28,7 +28,7 @@ public class SiteMapSBProject extends MB_SiteMapa implements Serializable {
     private PgAdmin admin;
 
     @Override
-    public Class<? extends ItfFabricaMenu> getFabricaMenu() {
+    public Class<? extends ComoFabricaMenu> getFabricaMenu() {
         return null;
     }
 
