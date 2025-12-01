@@ -6,7 +6,8 @@
 package com.super_bits.sbProjetos.Model;
 
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimplesORM;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
@@ -26,7 +27,7 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @InfoObjetoSB(tags = {"Cliente", "Cliente Coletivo Java"}, plural = "Clientes")
-public class Cliente extends EntidadeSimples implements Serializable {
+public class Cliente extends EntidadeSimplesORM implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -125,7 +126,7 @@ public class Cliente extends EntidadeSimples implements Serializable {
 
     public String getNomePasta() {
 
-        nomePasta = UtilSBCoreStringFiltros.gerarUrlAmigavel(getNome());
+        nomePasta = UtilCRCStringFiltros.gerarUrlAmigavel(getNome());
 
         return nomePasta;
     }

@@ -6,7 +6,7 @@
 package com.super_bits.sbProjetos.util;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringConversores;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringConversores;
 
 
 
@@ -37,8 +37,8 @@ public class UtilSBProjetosTest extends TesteJunit {
 
             Process p = pb.start();
 
-            String respostaErro = (UtilSBCoreStringConversores.getStringByInputStream(p.getErrorStream()));
-            String respostaPadrao = (UtilSBCoreStringConversores.getStringByInputStream(p.getInputStream()));
+            String respostaErro = (UtilCRCStringConversores.getStringByInputStream(p.getErrorStream()));
+            String respostaPadrao = (UtilCRCStringConversores.getStringByInputStream(p.getInputStream()));
 
             System.out.println("A resposta Erro foi");
             System.out.println(respostaErro);

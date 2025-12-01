@@ -5,7 +5,9 @@
  */
 package com.super_bits.sbProjetos.Model;
 
+import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeORMNormal;
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
+import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimplesORM;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabTipoAtributoObjeto;
 import java.util.Date;
@@ -21,7 +23,7 @@ import javax.persistence.Temporal;
  * @author Salvio
  */
 @Entity
-public class PreRequisito extends EntidadeSimples {
+public class PreRequisito extends EntidadeSimplesORM {
 
     @Id
     @InfoCampo(tipo = FabTipoAtributoObjeto.ID)

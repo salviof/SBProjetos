@@ -8,7 +8,12 @@ package com.super_bits.configSBFW.acessos;
 import com.super_bits.modulos.SBAcessosModel.ConfigPermissoesAcessoModelAbstrato;
 import com.super_bits.modulos.SBAcessosModel.model.GrupoUsuarioSB;
 import com.super_bits.modulosSB.Persistencia.dao.UtilSBPersistencia;
+import com.super_bits.modulosSB.SBCore.modulos.Controller.Interfaces.permissoes.ErroDadosDeContatoUsuarioNaoEncontrado;
+import com.super_bits.modulosSB.SBCore.modulos.erp.FabTipoAgenteOrganizacao;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.FabGruposPadrao;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ComoUsuario;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfGrupoUsuario;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.contato.ComoContatoHumano;
 
 import com.super_bits.sbProjetos.Model.Cliente;
 import com.super_bits.sbProjetos.Model.Desenvolvedor;
@@ -16,7 +21,8 @@ import com.super_bits.sbProjetos.Model.GerenteProjeto;
 import com.super_bits.sbProjetos.Model.Projeto;
 import com.super_bits.sbProjetos.Model.StatusRequisito;
 import com.super_bits.sbProjetos.controller.getaoProjeto.ModuloGestaoProjeto;
-import com.super_bits.modulosSB.SBCore.modulos.view.menu.MenusDaSessao;
+
+import org.coletivojava.fw.api.objetoNativo.view.menu.MenusDaSessao;
 
 /**
  *
@@ -132,5 +138,15 @@ public class ConfigAcessos extends ConfigPermissoesAcessoModelAbstrato {
     @Override
     public MenusDaSessao definirMenu(ItfGrupoUsuario pGrupo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public FabTipoAgenteOrganizacao getTipoAgente(ComoUsuario pUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ComoContatoHumano getContatoDoUsuario(ComoUsuario pUsuairo) throws ErroDadosDeContatoUsuarioNaoEncontrado {
+
     }
 }

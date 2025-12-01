@@ -9,11 +9,11 @@ import com.super_bits.modulos.SBAcessosModel.model.UsuarioSB;
 import com.super_bits.modulosSB.Persistencia.dao.UtilSBPersistencia;
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDataHora;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringConversores;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringGerador;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringSlugs;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDataHora;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringConversores;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringGerador;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringSlugs;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoCampo;
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.anotacoes.InfoObjetoSB;
@@ -156,7 +156,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     }
 
     public String getNomeLikeUrlAmigavel() {
-        return UtilSBCoreStringFiltros.gerarUrlAmigavel(nomeProjeto);
+        return UtilCRCStringFiltros.gerarUrlAmigavel(nomeProjeto);
     }
 
     public String getCaminhoPastaDoProjetoSourceLocal() {
@@ -189,7 +189,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
     public String getNomePastaProjeto() {
 
-        nomePastaProjeto = UtilSBCoreStringFiltros.gerarUrlAmigavel(getNomeProjeto());
+        nomePastaProjeto = UtilCRCStringFiltros.gerarUrlAmigavel(getNomeProjeto());
 
         return nomePastaProjeto;
     }
@@ -329,7 +329,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
     }
 
     public String getDataFimVersaoProjetoString() {
-        return UtilSBCoreDataHora.getDataSTRFormatoUsuario(getDataFimVersaoProjeto());
+        return UtilCRCDataHora.getDataSTRFormatoUsuario(getDataFimVersaoProjeto());
 
     }
 
@@ -344,7 +344,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
             }
 
             if (horasDisponiveisDia == 0) {
-                return UtilSBCoreDataHora.incrementaDias(new Date(), 999999999);
+                return UtilCRCDataHora.incrementaDias(new Date(), 999999999);
             }
 
             Double horasNescessarias = getHorasRestantesProximaVersao();
@@ -359,7 +359,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
             int i = diasTrabalho;
             while (i > 0) {
-                dataEntrega = UtilSBCoreDataHora.incrementaDias(dataEntrega, 1);
+                dataEntrega = UtilCRCDataHora.incrementaDias(dataEntrega, 1);
                 if (!(dataEntrega.getDay() == 1 || dataEntrega.getDay() == 6)) {
                     i--;
                 }
@@ -375,14 +375,14 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
     public Integer[] getRegressivaFimDoProjeto() {
         Date datafim = getDataFimVersaoProjeto();
-        Integer[] resultado = UtilSBCoreDataHora.intervaloTempoDiasHorasMinitosSegundos(new Date(), datafim);
+        Integer[] resultado = UtilCRCDataHora.intervaloTempoDiasHorasMinitosSegundos(new Date(), datafim);
         System.out.println(resultado);
         return resultado;
     }
 
     public Integer[] getRegressivaFimVersao() {
         Date datafim = getDataFimVersaoProjeto();
-        Integer[] resultado = UtilSBCoreDataHora.intervaloTempoDiasHorasMinitosSegundos(new Date(), getDataFimVersaoProjeto());
+        Integer[] resultado = UtilCRCDataHora.intervaloTempoDiasHorasMinitosSegundos(new Date(), getDataFimVersaoProjeto());
         System.out.println(resultado);
         return resultado;
     }
@@ -427,7 +427,7 @@ public class Projeto extends EntidadeSimples implements Serializable {
 
     public String getLinkSVNRelease() {
 
-        linkSVNRelease = VariaveisSBProject.diretorioSevidorSVNSource + "/" + UtilSBCoreStringFiltros.gerarUrlAmigavel(getNomeProjeto()) + "/trunk/";
+        linkSVNRelease = VariaveisSBProject.diretorioSevidorSVNSource + "/" + UtilCRCStringFiltros.gerarUrlAmigavel(getNomeProjeto()) + "/trunk/";
         return linkSVNRelease;
     }
 

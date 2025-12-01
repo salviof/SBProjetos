@@ -6,12 +6,12 @@
 package com.super_bits.sbProjetos.util;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreDiretorio;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCDiretorio;
 
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreShellBasico;
-import com.super_bits.modulosSB.SBCore.UtilGeral.UtilSBCoreStringFiltros;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCShellBasico;
+import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
 
-import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilSBCoreArquivoTexto;
+import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilCRCArquivoTexto;
 import com.super_bits.modulosSB.SBCore.modulos.Mensagens.FabMensagens;
 import com.super_bits.sbProjetos.Model.Cliente;
 import com.super_bits.sbProjetos.Model.Projeto;
@@ -152,8 +152,8 @@ public class UtilSBProjetos {
 
         Map<String, String> mapaPalavras = new HashMap<>();
 
-        mapaPalavras.put("InomeProjetoI", UtilSBCoreStringFiltros.gerarUrlAmigavel(p.getNomeProjeto()));
-        mapaPalavras.put("InomeClienteI", UtilSBCoreStringFiltros.gerarUrlAmigavel(p.getCliente().getNome()));
+        mapaPalavras.put("InomeProjetoI", UtilCRCStringFiltros.gerarUrlAmigavel(p.getNomeProjeto()));
+        mapaPalavras.put("InomeClienteI", UtilCRCStringFiltros.gerarUrlAmigavel(p.getCliente().getNome()));
 
         for (String extencaoArquivos : extensoesEditaveis) {
 
@@ -168,7 +168,7 @@ public class UtilSBProjetos {
             }
         }
 
-        List<String> subpastaras = UtilSBCoreDiretorio.getDiretoriosRecursivoOrdemMaoirArvore(new File(p.getCaminhoPastaDoProjetoSourceLocal()));
+        List<String> subpastaras = UtilCRCDiretorio.getDiretoriosRecursivoOrdemMaoirArvore(new File(p.getCaminhoPastaDoProjetoSourceLocal()));
         for (String subpasta : subpastaras) {
             for (String nomeAntigo : mapaPalavras.keySet()) {
 
@@ -346,7 +346,7 @@ public class UtilSBProjetos {
         //  "./superBitsDevOps/estacaoDeveloperOps/trabalharNovoProjeto.sh vip superkompras";
         // UtilSBShellScript.Process proc = null;
 
-        UtilSBCoreShellBasico.abrirScriptEmConsole(SCRIPT_PREPARAR_ESTACAO, pProjeto.getCliente().getNomePasta(), pProjeto.getNomePastaProjeto());
+        UtilCRCShellBasico.abrirScriptEmConsole(SCRIPT_PREPARAR_ESTACAO, pProjeto.getCliente().getNomePasta(), pProjeto.getNomePastaProjeto());
 
         try {
             Thread.sleep(25000);
@@ -401,8 +401,8 @@ public class UtilSBProjetos {
 
         servidoresGitRelease.add(pastaCliente);
 
-        UtilSBCoreArquivoTexto.escreveLinhasEmNovoArquivo(arquivoInfoClienteRelease, servidoresGitRelease);
-        UtilSBCoreArquivoTexto.escreveLinhasEmNovoArquivo(arquivoInfoClienteSource, servidoresGitSource);
+        UtilCRCArquivoTexto.escreveLinhasEmNovoArquivo(arquivoInfoClienteRelease, servidoresGitRelease);
+        UtilCRCArquivoTexto.escreveLinhasEmNovoArquivo(arquivoInfoClienteSource, servidoresGitSource);
 
         Assert.assertTrue("O cliente.info release do cliente não foi encontrado", new File(arquivoInfoClienteRelease).exists());
         Assert.assertTrue("O cliente.info source do cliente não foi encontrado", new File(arquivoInfoClienteRelease).exists());
@@ -421,7 +421,7 @@ public class UtilSBProjetos {
     }
 
     private static void criarNovoArquivoLinhasComVerificacao(String pArquivo, List<String> pLinhasEscrita) {
-        UtilSBCoreArquivoTexto.escreveLinhasEmNovoArquivo(pArquivo, pLinhasEscrita);
+        UtilCRCArquivoTexto.escreveLinhasEmNovoArquivo(pArquivo, pLinhasEscrita);
         Assert.assertTrue("O cliente.info release do cliente não foi encontrado", new File(pArquivo).exists());
 
     }

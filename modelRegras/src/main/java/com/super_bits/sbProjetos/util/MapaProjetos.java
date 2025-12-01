@@ -7,8 +7,8 @@ package com.super_bits.sbProjetos.util;
 
 import com.google.common.collect.Lists;
 import com.super_bits.modulosSB.SBCore.ConfigGeral.SBCore;
-import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilSBCoreArquivoTexto;
-import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilSBCoreArquivos;
+import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilCRCArquivoTexto;
+import com.super_bits.modulosSB.SBCore.modulos.ManipulaArquivo.UtilCRCArquivos;
 import com.super_bits.modulosSB.SBCore.modulos.fabrica.ItfFabrica;
 import com.super_bits.sbProjetos.Model.Cliente;
 import com.super_bits.sbProjetos.Model.Projeto;
@@ -63,14 +63,14 @@ public class MapaProjetos {
     public static Properties getPropriedadesDoClientePastaSource(Cliente pCliente){
         try {
         String arquivoSource=pCliente.getCaminhoPastaClinteSource() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente();
-        if (UtilSBCoreArquivos.isArquivoExiste(arquivoSource)){
+        if (UtilCRCArquivos.isArquivoExiste(arquivoSource)){
             
         }else {
             List<String> conteudoPadraoArquivo=Lists.newArrayList(FabVariaveisScriptDeProjeto.SERVIDOR_GIT_SOURCE.toString()+"="+FabVariaveisScriptDeProjeto.SERVIDOR_GIT_SOURCE.valorPadrao());
-            UtilSBCoreArquivoTexto.escreveLinhasEmNovoArquivo(arquivoSource, conteudoPadraoArquivo);
+            UtilCRCArquivoTexto.escreveLinhasEmNovoArquivo(arquivoSource, conteudoPadraoArquivo);
             System.out.println("NÃO ENCONTRAMOS O ARQUIVO DE CONFIGURAÇÃO DO CLIENTE, CONTENDO O SERVIDOR DO REPOSITÓRIO, o sistema irá criar um arquivo padrão..");
         }
-          Properties prop = UtilSBCoreArquivoTexto.getPropriedadesNoArquivo(pCliente.getCaminhoPastaClinteSource() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente());
+          Properties prop = UtilCRCArquivoTexto.getPropriedadesNoArquivo(pCliente.getCaminhoPastaClinteSource() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente());
         return prop;
         }catch(Throwable t){
             SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Deveria haver na pasta do projeto "+pCliente.getNome()+" um arquivo de proriedades, informando o servidor de repositório cliente do cliente, para os arquivos source e parar os arquivos release", t);
@@ -81,14 +81,14 @@ public class MapaProjetos {
      public static Properties getPropriedadesDoClientePastaRelease(Cliente pCliente){
         try {
         String arquivoRelease=pCliente.getCaminhoPastaClinteRelease() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente();
-        if (UtilSBCoreArquivos.isArquivoExiste(arquivoRelease)){
+        if (UtilCRCArquivos.isArquivoExiste(arquivoRelease)){
             
         }else {
             List<String> conteudoPadraoArquivo=Lists.newArrayList(FabVariaveisScriptDeProjeto.SERVIDOR_GIT_RELEASE.toString()+"="+FabVariaveisScriptDeProjeto.SERVIDOR_GIT_RELEASE.valorPadrao());
-            UtilSBCoreArquivoTexto.escreveLinhasEmNovoArquivo(arquivoRelease, conteudoPadraoArquivo);
+            UtilCRCArquivoTexto.escreveLinhasEmNovoArquivo(arquivoRelease, conteudoPadraoArquivo);
             System.out.println("NÃO ENCONTRAMOS O ARQUIVO DE CONFIGURAÇÃO DO CLIENTE, CONTENDO O SERVIDOR DO REPOSITÓRIO, o sistema irá criar um arquivo padrão..");
         }
-          Properties prop = UtilSBCoreArquivoTexto.getPropriedadesNoArquivo(pCliente.getCaminhoPastaClinteSource() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente());
+          Properties prop = UtilCRCArquivoTexto.getPropriedadesNoArquivo(pCliente.getCaminhoPastaClinteSource() + "/" + FabVariaveisScriptDeProjeto.nomeArquivoCliente());
         return prop;
         }catch(Throwable t){
             SBCore.RelatarErro(FabErro.SOLICITAR_REPARO, "Deveria haver na pasta do projeto "+pCliente.getNome()+" um arquivo de proriedades, informando o servidor de repositório cliente do cliente, para os arquivos source e parar os arquivos release", t);
