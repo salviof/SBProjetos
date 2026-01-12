@@ -9,7 +9,7 @@ import com.super_bits.modulosSB.SBCore.UtilGeral.UTilSBCoreInputs;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringValidador;
 
 import com.super_bits.modulosSB.SBCore.modulos.objetos.InfoCampos.campo.TIPO_PRIMITIVO;
-import com.super_bits.modulosSB.SBCore.modulos.objetos.registro.Interfaces.basico.ItfBeanSimples;
+import com.super_bits.modulosSB.SBCore.modulos.objetos.entidade.basico.ItfBeanSimples;
 import com.super_bits.sbProjetos.Model.Cliente;
 import com.super_bits.sbProjetos.Model.Projeto;
 import java.util.HashMap;
