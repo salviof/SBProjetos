@@ -5,7 +5,6 @@
  */
 package com.super_bits.sbProjetos.Model;
 
-import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimples;
 import com.super_bits.modulosSB.Persistencia.registro.persistidos.EntidadeSimplesORM;
 import com.super_bits.modulosSB.SBCore.UtilGeral.UtilCRCStringFiltros;
 

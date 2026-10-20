@@ -6,7 +6,7 @@
 package com.super_bits.sbProjetos;
 
 import com.super_bits.modulosSB.SBCore.ConfigGeral.ConfiguradorCoreDeProjetoJarAbstrato;
-import com.super_bits.modulosSB.SBCore.ConfigGeral.ItfConfiguracaoCoreCustomizavel;
+import com.super_bits.modulosSB.SBCore.ConfigGeral.ComoContextoExecCustomizavel;
 import com.super_bits.modulosSB.SBCore.modulos.Mensagens.CentralMensagemArqTexto;
 
 /**
@@ -21,7 +21,7 @@ public class ConfiguradorCoreSBProjetosModel extends ConfiguradorCoreDeProjetoJa
     }
 
     @Override
-    public void defineFabricasDeACao(ItfConfiguracaoCoreCustomizavel pConfig) {
+    public void defineFabricasDeACao(ComoContextoExecCustomizavel pConfig) {
         pConfig.setCentralMEnsagens(CentralMensagemArqTexto.class);
         pConfig.setFabricaDeAcoes(new Class[]{});
 

@@ -5,7 +5,8 @@
 package com.super_bits.sbProjetos.configAppp;
 
 import com.super_bits.modulosSB.Persistencia.ConfigGeral.ItfConfigSBPersistencia;
-import com.super_bits.modulosSB.SBCore.modulos.fabrica.ItfFabrica;
+import com.super_bits.modulosSB.SBCore.modulos.fabrica.ComoFabrica;
+
 import com.super_bits.sbProjetos.controller.getaoProjeto.FabAcaoGestaoProjetos;
 
 /**
@@ -51,7 +52,7 @@ public class ConfigPersistenciaInomeProjetoI implements ItfConfigSBPersistencia 
     }
 
     @Override
-    public Class<? extends ItfFabrica>[] fabricasRegistrosIniciais() {
+    public Class<? extends ComoFabrica>[] fabricasRegistrosIniciais() {
         return new Class[]{FabAcaoGestaoProjetos.class};
     }
 
